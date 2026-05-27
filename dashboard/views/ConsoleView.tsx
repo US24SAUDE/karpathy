@@ -5,6 +5,7 @@ import { Send, Sparkles, Terminal, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useSystem } from "@/lib/system";
 import AgentAvatar from "@/components/AgentAvatar";
+import MicButton from "@/components/MicButton";
 import type { AgentId } from "@/lib/types";
 
 interface Msg {
@@ -342,6 +343,7 @@ export default function ConsoleView() {
             placeholder={`Message ${agent?.name || "Claude"}…  (Enter to send · Shift+Enter for newline)`}
             className="max-h-32 flex-1 resize-none bg-transparent px-3 py-2.5 text-sm text-ink outline-none placeholder:text-faint"
           />
+          <MicButton value={input} onChange={setInput} />
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
