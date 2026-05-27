@@ -12,9 +12,15 @@ import type {
   Agent,
   ActivityEvent,
   AgentStatus,
+  Goal,
+  JournalEntry,
   Vitals,
 } from "./types";
 import { clamp, pick, rand } from "./utils";
+import { saveGoals, saveJournalEntry } from "./vault";
+
+const GOALS_KEY = "claude-os-goals";
+const JOURNAL_KEY = "claude-os-journal";
 
 /* -------------------------------------------------------------------------- */
 /*  Seed data                                                                  */
@@ -236,6 +242,12 @@ interface SystemState {
   vitals: Vitals;
   setAgentStatus: (id: string, status: AgentStatus) => void;
   bootMs: number;
+  goals: Goal[];
+  addGoal: (text: string) => void;
+  toggleGoal: (id: string) => void;
+  removeGoal: (id: string) => void;
+  journal: JournalEntry[];
+  addJournalEntry: (content: string) => void;
 }
 
 const SystemContext = createContext<SystemState | null>(null);
@@ -261,6 +273,58 @@ export function SystemProvider({ children }: { children: ReactNode }) {
     netOut: 9.2,
   });
   const bootMs = useRef(Date.now()).current;
+
+  const [goals, setGoals] = useState<Goal[]>([]);
+  const [journal, setJournal] = useState<JournalEntry[]>([]);
+
+  // hydrate goals + journal from localStorage on mount
+  useEffect(() => {
+    try {
+      const g = localStorage.getItem(GOALS_KEY);
+      if (g) setGoals(JSON.parse(g));
+      const j = localStorage.getItem(JOURNAL_KEY);
+      if (j) setJournal(JSON.parse(j));
+    } catch {
+      /* corrupt storage — start fresh */
+    }
+  }, []);
+
+  function commitGoals(next: Goal[]) {
+    setGoals(next);
+    localStorage.setItem(GOALS_KEY, JSON.stringify(next));
+    saveGoals(next);
+  }
+
+  function addGoal(text: string) {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    commitGoals([
+      ...goals,
+      { id: `g${Date.now()}`, text: trimmed, done: false, createdAt: Date.now() },
+    ]);
+  }
+
+  function toggleGoal(id: string) {
+    commitGoals(goals.map((g) => (g.id === id ? { ...g, done: !g.done } : g)));
+  }
+
+  function removeGoal(id: string) {
+    commitGoals(goals.filter((g) => g.id !== id));
+  }
+
+  function addJournalEntry(content: string) {
+    const trimmed = content.trim();
+    if (!trimmed) return;
+    const entry: JournalEntry = {
+      id: `j${Date.now()}`,
+      content: trimmed,
+      createdAt: Date.now(),
+    };
+    const next = [entry, ...journal];
+    setJournal(next);
+    localStorage.setItem(JOURNAL_KEY, JSON.stringify(next));
+    saveJournalEntry(entry);
+  }
 
   // seed a few activity events on mount
   useEffect(() => {
@@ -362,7 +426,19 @@ export function SystemProvider({ children }: { children: ReactNode }) {
 
   return (
     <SystemContext.Provider
-      value={{ agents, activity, vitals, setAgentStatus, bootMs }}
+      value={{
+        agents,
+        activity,
+        vitals,
+        setAgentStatus,
+        bootMs,
+        goals,
+        addGoal,
+        toggleGoal,
+        removeGoal,
+        journal,
+        addJournalEntry,
+      }}
     >
       {children}
     </SystemContext.Provider>

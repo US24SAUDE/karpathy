@@ -7,6 +7,8 @@ import {
   Activity,
   BarChart3,
   Terminal,
+  Target,
+  BookOpen,
   Settings,
   CornerDownLeft,
   type LucideIcon,
@@ -30,7 +32,9 @@ const COMMANDS: Cmd[] = [
   { id: "3", label: "Open Activity Stream", hint: "events", icon: Activity, color: "#34d399", view: "activity" },
   { id: "4", label: "Open Analytics", hint: "metrics", icon: BarChart3, color: "#fbbf24", view: "analytics" },
   { id: "5", label: "Launch Claude Console", hint: "chat", icon: Terminal, color: "#ec4899", view: "console" },
-  { id: "6", label: "Open Settings", hint: "config · API key", icon: Settings, color: "#6366f1", view: "settings" },
+  { id: "6", label: "Open Goals", hint: "goals · obsidian", icon: Target, color: "#f59e0b", view: "goals" },
+  { id: "7", label: "Open Journal", hint: "journal · obsidian", icon: BookOpen, color: "#06b6d4", view: "journal" },
+  { id: "8", label: "Open Settings", hint: "config · API key · vault", icon: Settings, color: "#6366f1", view: "settings" },
 ];
 
 export default function CommandPalette({

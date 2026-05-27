@@ -13,6 +13,8 @@ import AgentsView from "@/views/AgentsView";
 import ActivityView from "@/views/ActivityView";
 import AnalyticsView from "@/views/AnalyticsView";
 import ConsoleView from "@/views/ConsoleView";
+import GoalsView from "@/views/GoalsView";
+import JournalView from "@/views/JournalView";
 import SettingsView from "@/views/SettingsView";
 
 export default function Page() {
@@ -66,6 +68,8 @@ export default function Page() {
                     {view === "activity" && <ActivityView />}
                     {view === "analytics" && <AnalyticsView />}
                     {view === "console" && <ConsoleView />}
+                    {view === "goals" && <GoalsView />}
+                    {view === "journal" && <JournalView />}
                     {view === "settings" && <SettingsView />}
                   </motion.div>
                 </AnimatePresence>

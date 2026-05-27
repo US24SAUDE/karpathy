@@ -7,6 +7,8 @@ import {
   Activity,
   BarChart3,
   Terminal,
+  Target,
+  BookOpen,
   Settings,
   type LucideIcon,
 } from "lucide-react";
@@ -18,6 +20,8 @@ export type ViewId =
   | "activity"
   | "analytics"
   | "console"
+  | "goals"
+  | "journal"
   | "settings";
 
 const ITEMS: { id: ViewId; label: string; icon: LucideIcon; color: string }[] =
@@ -27,6 +31,8 @@ const ITEMS: { id: ViewId; label: string; icon: LucideIcon; color: string }[] =
     { id: "activity", label: "Activity Stream", icon: Activity, color: "#34d399" },
     { id: "analytics", label: "Analytics", icon: BarChart3, color: "#fbbf24" },
     { id: "console", label: "Claude Console", icon: Terminal, color: "#ec4899" },
+    { id: "goals", label: "Goals", icon: Target, color: "#f59e0b" },
+    { id: "journal", label: "Journal", icon: BookOpen, color: "#06b6d4" },
     { id: "settings", label: "Settings", icon: Settings, color: "#6366f1" },
   ];
 

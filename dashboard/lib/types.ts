@@ -37,6 +37,19 @@ export interface ActivityEvent {
   kind: "deploy" | "task" | "alert" | "data" | "comms" | "model";
 }
 
+export interface Goal {
+  id: string;
+  text: string;
+  done: boolean;
+  createdAt: number;
+}
+
+export interface JournalEntry {
+  id: string;
+  content: string;
+  createdAt: number;
+}
+
 export interface Vitals {
   totalTokens: number;
   requestsPerMin: number;

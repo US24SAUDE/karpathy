@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSystem } from "@/lib/system";
 import AgentAvatar from "@/components/AgentAvatar";
 import MicButton from "@/components/MicButton";
+import { saveChatMessage } from "@/lib/vault";
 import type { AgentId } from "@/lib/types";
 
 interface Msg {
@@ -69,6 +70,9 @@ export default function ConsoleView() {
     setInput("");
     setLoading(true);
 
+    const agentName = agent?.name ?? "Claude";
+    saveChatMessage({ agentId: selectedAgent, agentName, role: "user", content: trimmed });
+
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
@@ -100,6 +104,12 @@ export default function ConsoleView() {
             { role: "assistant", content: data.reply, simulated: data.simulated },
           ],
         }));
+        saveChatMessage({
+          agentId: selectedAgent,
+          agentName,
+          role: "assistant",
+          content: data.reply,
+        });
       }
     } catch {
       setAgentMessages((prev) => ({
