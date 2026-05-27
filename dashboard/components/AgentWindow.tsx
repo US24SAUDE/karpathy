@@ -7,6 +7,7 @@ import type { Agent } from "@/lib/types";
 import { useSystem } from "@/lib/system";
 import { formatUptime } from "@/lib/utils";
 import { ProgressRing, StatusDot, STATUS_LABEL, Pill } from "./primitives";
+import AgentAvatar from "./AgentAvatar";
 
 const LEVEL_COLOR = {
   info: "#8b88b0",
@@ -77,14 +78,14 @@ export default function AgentWindow({
 
             {/* header */}
             <div className="flex items-center gap-4 px-5 py-4">
-              <div
-                className="flex h-16 w-16 items-center justify-center rounded-2xl text-3xl"
-                style={{
-                  background: `linear-gradient(135deg, ${agent.gradient[0]}, ${agent.gradient[1]})`,
-                  boxShadow: `0 8px 28px ${agent.gradient[0]}66`,
-                }}
-              >
-                {agent.glyph}
+              <div className="relative">
+                <AgentAvatar agentId={agent.id as any} size="lg" />
+                <div
+                  className="absolute inset-0 rounded-lg blur-xl -z-10 opacity-50"
+                  style={{
+                    background: `linear-gradient(135deg, ${agent.gradient[0]}, ${agent.gradient[1]})`,
+                  }}
+                />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">

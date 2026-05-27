@@ -5,6 +5,7 @@ import { Cpu, MemoryStick, Zap } from "lucide-react";
 import type { Agent } from "@/lib/types";
 import { formatNum } from "@/lib/utils";
 import { Sparkline, StatusDot, STATUS_LABEL } from "./primitives";
+import AgentAvatar from "./AgentAvatar";
 
 export default function AgentCard({
   agent,
@@ -32,15 +33,7 @@ export default function AgentCard({
         {/* top */}
         <div className="mb-3 flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <div
-              className="relative flex h-11 w-11 items-center justify-center rounded-xl text-xl"
-              style={{
-                background: `linear-gradient(135deg, ${agent.gradient[0]}, ${agent.gradient[1]})`,
-                boxShadow: `0 6px 20px ${agent.gradient[0]}55`,
-              }}
-            >
-              {agent.glyph}
-            </div>
+            <AgentAvatar agentId={agent.id as any} size="md" />
             <div>
               <div className="flex items-center gap-2 font-semibold text-ink">
                 {agent.name}
