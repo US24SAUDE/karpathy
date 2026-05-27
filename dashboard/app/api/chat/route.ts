@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { spawn } from "child_process";
 
 export const runtime = "nodejs";
 
@@ -75,8 +76,10 @@ export async function POST(req: NextRequest) {
   const config = PROVIDERS[provider] ?? PROVIDERS.anthropic;
   const key = apiKey?.trim() || process.env[config.envKey];
 
-  // Simulation fallback — no key configured.
+  // No API key — try Claude Code CLI (uses Claude Max subscription)
   if (!key) {
+    const cliReply = await tryClaudeCLI(messages, system || DEFAULT_SYSTEM);
+    if (cliReply) return NextResponse.json({ reply: cliReply, simulated: false, via: "cli" });
     const reply = SIM_REPLIES[Math.floor(Math.random() * SIM_REPLIES.length)];
     return NextResponse.json({ reply, simulated: true });
   }
@@ -133,4 +136,32 @@ export async function POST(req: NextRequest) {
       { status: 502 }
     );
   }
+}
+
+// Uses the local Claude Code CLI credentials (Claude Max subscription)
+function tryClaudeCLI(
+  messages: ChatMessage[],
+  system: string
+): Promise<string | null> {
+  return new Promise((resolve) => {
+    const history = messages
+      .map((m) => `${m.role === "user" ? "Human" : "Assistant"}: ${m.content}`)
+      .join("\n");
+    const prompt = `${system}\n\n${history}\nAssistant:`;
+
+    const proc = spawn("claude", ["--print", prompt], {
+      timeout: 30000,
+      shell: true,
+    });
+
+    let out = "";
+    let err = "";
+    proc.stdout.on("data", (d: Buffer) => { out += d.toString(); });
+    proc.stderr.on("data", (d: Buffer) => { err += d.toString(); });
+    proc.on("close", (code: number) => {
+      if (code === 0 && out.trim()) resolve(out.trim());
+      else resolve(null);
+    });
+    proc.on("error", () => resolve(null));
+  });
 }
