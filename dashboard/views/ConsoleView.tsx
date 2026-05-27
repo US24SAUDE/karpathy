@@ -1,12 +1,17 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Send, Sparkles, Terminal, Zap } from "lucide-react";
+import { ChevronDown, Send, Sparkles, Terminal, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useSystem } from "@/lib/system";
 import AgentAvatar from "@/components/AgentAvatar";
 import MicButton from "@/components/MicButton";
 import { saveChatMessage } from "@/lib/vault";
+import {
+  PROVIDERS,
+  getProviderKey,
+  providerForModel,
+} from "@/lib/providers";
 import type { AgentId } from "@/lib/types";
 
 interface Msg {
@@ -14,12 +19,6 @@ interface Msg {
   content: string;
   simulated?: boolean;
 }
-
-const MODELS = [
-  { id: "claude-opus-4-7", label: "Opus 4.7" },
-  { id: "claude-sonnet-4-6", label: "Sonnet 4.6" },
-  { id: "claude-haiku-4-5", label: "Haiku 4.5" },
-];
 
 const SUGGESTIONS = [
   "Summarize the status of my agent fleet",
@@ -41,13 +40,18 @@ export default function ConsoleView() {
   const [selectedAgent, setSelectedAgent] = useState<AgentId>("atlas");
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [model, setModel] = useState(MODELS[1].id);
+  const [model, setModel] = useState(PROVIDERS[0].models[1].id);
+  const [modelMenu, setModelMenu] = useState(false);
   const [hasKey, setHasKey] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const activeProvider = providerForModel(model);
+  const activeModelLabel =
+    activeProvider.models.find((m) => m.id === model)?.label ?? model;
+
   useEffect(() => {
-    setHasKey(!!localStorage.getItem("claude-os-key"));
-  }, []);
+    setHasKey(!!getProviderKey(activeProvider.storageKey));
+  }, [activeProvider.storageKey, modelMenu]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({
@@ -74,13 +78,15 @@ export default function ConsoleView() {
     saveChatMessage({ agentId: selectedAgent, agentName, role: "user", content: trimmed });
 
     try {
+      const provider = providerForModel(model);
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           messages: next.map((m) => ({ role: m.role, content: m.content })),
           model,
-          apiKey: localStorage.getItem("claude-os-key") || undefined,
+          provider: provider.id,
+          apiKey: getProviderKey(provider.storageKey) || undefined,
           system: systemPrompt,
         }),
       });
@@ -203,7 +209,7 @@ export default function ConsoleView() {
                   <Terminal className="text-magenta" size={24} /> Main Console
                 </h1>
                 <p className="mt-1 text-sm text-muted">
-                  Direct neural link to Claude ·{" "}
+                  Direct link to {activeProvider.name.split(" ")[0]} ·{" "}
                   {hasKey ? (
                     <span className="text-emerald">● connected</span>
                   ) : (
@@ -213,20 +219,72 @@ export default function ConsoleView() {
               </>
             )}
           </div>
-          <div className="flex items-center gap-1 rounded-xl glass p-1">
-            {MODELS.map((m) => (
-              <button
-                key={m.id}
-                onClick={() => setModel(m.id)}
-                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
-                  model === m.id
-                    ? "bg-magenta/20 text-magenta"
-                    : "text-faint hover:text-muted"
-                }`}
-              >
-                {m.label}
-              </button>
-            ))}
+          <div className="relative">
+            <button
+              onClick={() => setModelMenu((o) => !o)}
+              className="flex items-center gap-2 rounded-xl glass px-3 py-2 text-xs font-medium text-ink transition hover:bg-white/[0.06]"
+            >
+              <span
+                className="h-2 w-2 rounded-full"
+                style={{ background: activeProvider.accent }}
+              />
+              <span className="text-faint">{activeProvider.name.split(" ")[0]}</span>
+              <span>{activeModelLabel}</span>
+              <ChevronDown size={14} className="text-faint" />
+            </button>
+            <AnimatePresence>
+              {modelMenu && (
+                <>
+                  <div
+                    className="fixed inset-0 z-40"
+                    onClick={() => setModelMenu(false)}
+                  />
+                  <motion.div
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    className="absolute right-0 z-50 mt-2 w-60 overflow-hidden rounded-xl glass-strong p-1.5 shadow-2xl"
+                  >
+                    {PROVIDERS.map((p) => {
+                      const connected = !!getProviderKey(p.storageKey);
+                      return (
+                        <div key={p.id} className="mb-1 last:mb-0">
+                          <div className="flex items-center gap-1.5 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-faint">
+                            <span
+                              className="h-1.5 w-1.5 rounded-full"
+                              style={{ background: p.accent }}
+                            />
+                            {p.name}
+                            {connected ? (
+                              <span className="ml-auto text-emerald">●</span>
+                            ) : (
+                              <span className="ml-auto text-faint/50">○</span>
+                            )}
+                          </div>
+                          {p.models.map((m) => (
+                            <button
+                              key={m.id}
+                              onClick={() => {
+                                setModel(m.id);
+                                setModelMenu(false);
+                              }}
+                              className={`flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-xs transition ${
+                                model === m.id
+                                  ? "bg-magenta/20 text-magenta"
+                                  : "text-muted hover:bg-white/[0.05] hover:text-ink"
+                              }`}
+                            >
+                              {m.label}
+                              {model === m.id && <span>✓</span>}
+                            </button>
+                          ))}
+                        </div>
+                      );
+                    })}
+                  </motion.div>
+                </>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
