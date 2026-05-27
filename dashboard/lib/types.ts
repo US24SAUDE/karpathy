@@ -1,4 +1,5 @@
 export type AgentStatus = "active" | "thinking" | "idle" | "paused" | "error";
+export type AgentId = "atlas" | "nova" | "orion" | "echo" | "sentinel" | "forge";
 
 export interface AgentLog {
   t: number;

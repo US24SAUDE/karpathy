@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Cpu, MemoryStick, Zap } from "lucide-react";
-import type { Agent } from "@/lib/types";
+import type { Agent, AgentId } from "@/lib/types";
 import { formatNum } from "@/lib/utils";
 import { Sparkline, StatusDot, STATUS_LABEL } from "./primitives";
 import AgentAvatar from "./AgentAvatar";
@@ -33,7 +33,7 @@ export default function AgentCard({
         {/* top */}
         <div className="mb-3 flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <AgentAvatar agentId={agent.id as any} size="md" />
+            <AgentAvatar agentId={agent.id as AgentId} size="md" />
             <div>
               <div className="flex items-center gap-2 font-semibold text-ink">
                 {agent.name}

@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Pause, Play, Square, X, RotateCw } from "lucide-react";
 import { useEffect, useRef } from "react";
-import type { Agent } from "@/lib/types";
+import type { Agent, AgentId } from "@/lib/types";
 import { useSystem } from "@/lib/system";
 import { formatUptime } from "@/lib/utils";
 import { ProgressRing, StatusDot, STATUS_LABEL, Pill } from "./primitives";
@@ -79,7 +79,7 @@ export default function AgentWindow({
             {/* header */}
             <div className="flex items-center gap-4 px-5 py-4">
               <div className="relative">
-                <AgentAvatar agentId={agent.id as any} size="lg" />
+                <AgentAvatar agentId={agent.id as AgentId} size="lg" />
                 <div
                   className="absolute inset-0 rounded-lg blur-xl -z-10 opacity-50"
                   style={{
