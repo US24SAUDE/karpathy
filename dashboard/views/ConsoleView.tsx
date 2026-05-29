@@ -50,8 +50,11 @@ export default function ConsoleView() {
     activeProvider.models.find((m) => m.id === model)?.label ?? model;
 
   useEffect(() => {
-    setHasKey(!!getProviderKey(activeProvider.storageKey));
-  }, [activeProvider.storageKey, modelMenu]);
+    setHasKey(
+      activeProvider.kind === "cli" ||
+        !!getProviderKey(activeProvider.storageKey)
+    );
+  }, [activeProvider.storageKey, activeProvider.kind, modelMenu]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({

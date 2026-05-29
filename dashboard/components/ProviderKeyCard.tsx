@@ -78,41 +78,49 @@ export default function ProviderKeyCard({
         )}
       </div>
 
-      <div className="flex gap-2">
-        <div className="relative flex-1">
-          <input
-            type={reveal ? "text" : "password"}
-            value={key}
-            onChange={(e) => setKey(e.target.value)}
-            placeholder={provider.placeholder}
-            className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2.5 pr-10 font-mono text-sm text-ink outline-none transition focus:border-violet/50"
-          />
-          <button
-            onClick={() => setReveal((r) => !r)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-faint hover:text-muted"
-          >
-            {reveal ? <EyeOff size={16} /> : <Eye size={16} />}
-          </button>
+      {provider.kind === "cli" ? (
+        <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3 text-[11px] text-faint">
+          No API key needed — this provider runs the local{" "}
+          <code>{provider.cli?.cmd}</code> binary. Install it from the docs link
+          above, then pick it from the model selector in the Console.
         </div>
-        <motion.button
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          onClick={save}
-          className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white"
-          style={{ background: "linear-gradient(135deg,#a855f7,#6366f1)" }}
-        >
-          {saved ? <Check size={16} /> : null}
-          {saved ? "Saved" : "Save"}
-        </motion.button>
-        {stored && (
-          <button
-            onClick={clear}
-            className="flex items-center justify-center rounded-xl border border-rose/30 bg-rose/10 px-3 text-rose transition hover:bg-rose/20"
+      ) : (
+        <div className="flex gap-2">
+          <div className="relative flex-1">
+            <input
+              type={reveal ? "text" : "password"}
+              value={key}
+              onChange={(e) => setKey(e.target.value)}
+              placeholder={provider.placeholder}
+              className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2.5 pr-10 font-mono text-sm text-ink outline-none transition focus:border-violet/50"
+            />
+            <button
+              onClick={() => setReveal((r) => !r)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-faint hover:text-muted"
+            >
+              {reveal ? <EyeOff size={16} /> : <Eye size={16} />}
+            </button>
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={save}
+            className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white"
+            style={{ background: "linear-gradient(135deg,#a855f7,#6366f1)" }}
           >
-            <Trash2 size={16} />
-          </button>
-        )}
-      </div>
+            {saved ? <Check size={16} /> : null}
+            {saved ? "Saved" : "Save"}
+          </motion.button>
+          {stored && (
+            <button
+              onClick={clear}
+              className="flex items-center justify-center rounded-xl border border-rose/30 bg-rose/10 px-3 text-rose transition hover:bg-rose/20"
+            >
+              <Trash2 size={16} />
+            </button>
+          )}
+        </div>
+      )}
     </motion.div>
   );
 }

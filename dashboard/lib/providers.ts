@@ -5,7 +5,15 @@ export interface ModelOption {
   label: string;
 }
 
-export type ProviderId = "anthropic" | "openai" | "xai" | "glm";
+export type ProviderId =
+  | "anthropic"
+  | "openai"
+  | "xai"
+  | "glm"
+  | "hermes"
+  | "claude-cli";
+
+export type ProviderKind = "api" | "cli";
 
 export interface ProviderMeta {
   id: ProviderId;
@@ -16,6 +24,8 @@ export interface ProviderMeta {
   accent: string;
   docsUrl: string;
   models: ModelOption[];
+  kind: ProviderKind;
+  cli?: { cmd: string; args?: string[] };
 }
 
 export const PROVIDERS: ProviderMeta[] = [
@@ -27,11 +37,36 @@ export const PROVIDERS: ProviderMeta[] = [
     placeholder: "sk-ant-...",
     accent: "#a855f7",
     docsUrl: "https://console.anthropic.com/settings/keys",
+    kind: "api",
     models: [
       { id: "claude-opus-4-7", label: "Opus 4.7" },
       { id: "claude-sonnet-4-6", label: "Sonnet 4.6" },
       { id: "claude-haiku-4-5", label: "Haiku 4.5" },
     ],
+  },
+  {
+    id: "claude-cli",
+    name: "Claude Code (local CLI)",
+    blurb: "Uses your Claude Max subscription via the local CLI",
+    storageKey: "claude-os-cli-claude",
+    placeholder: "no key needed",
+    accent: "#a855f7",
+    docsUrl: "https://docs.claude.com/claude-code",
+    kind: "cli",
+    cli: { cmd: "claude", args: ["--print"] },
+    models: [{ id: "claude-cli-default", label: "Claude Code" }],
+  },
+  {
+    id: "hermes",
+    name: "Hermes Agent (local CLI)",
+    blurb: "Self-improving agent from Nous Research, runs locally",
+    storageKey: "claude-os-cli-hermes",
+    placeholder: "no key needed",
+    accent: "#f59e0b",
+    docsUrl: "https://github.com/nousresearch/hermes-agent",
+    kind: "cli",
+    cli: { cmd: "hermes", args: ["--print"] },
+    models: [{ id: "hermes-default", label: "Hermes" }],
   },
   {
     id: "openai",
@@ -41,6 +76,7 @@ export const PROVIDERS: ProviderMeta[] = [
     placeholder: "sk-...",
     accent: "#10a37f",
     docsUrl: "https://platform.openai.com/api-keys",
+    kind: "api",
     models: [
       { id: "gpt-4o", label: "GPT-4o" },
       { id: "gpt-4o-mini", label: "GPT-4o mini" },
@@ -55,6 +91,7 @@ export const PROVIDERS: ProviderMeta[] = [
     placeholder: "xai-...",
     accent: "#e5e7eb",
     docsUrl: "https://console.x.ai",
+    kind: "api",
     models: [
       { id: "grok-2-latest", label: "Grok 2" },
       { id: "grok-beta", label: "Grok Beta" },
@@ -68,6 +105,7 @@ export const PROVIDERS: ProviderMeta[] = [
     placeholder: "your-glm-key...",
     accent: "#3b82f6",
     docsUrl: "https://open.bigmodel.cn/usercenter/apikeys",
+    kind: "api",
     models: [
       { id: "glm-4-plus", label: "GLM-4 Plus" },
       { id: "glm-4", label: "GLM-4" },

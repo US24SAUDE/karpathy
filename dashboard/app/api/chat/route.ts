@@ -73,18 +73,32 @@ export async function POST(req: NextRequest) {
   }
 
   const { messages = [], model, apiKey, system, provider = "anthropic" } = body;
+  const systemPrompt = system || DEFAULT_SYSTEM;
+
+  // CLI providers (claude-cli, hermes, etc.) — spawn local executable
+  if (provider === "hermes" || provider === "claude-cli") {
+    const cmd = provider === "hermes" ? "hermes" : "claude";
+    const cliReply = await runCli(cmd, messages, systemPrompt);
+    if (cliReply.ok) {
+      return NextResponse.json({ reply: cliReply.text, simulated: false, via: "cli" });
+    }
+    return NextResponse.json(
+      { error: `${provider} CLI failed`, detail: cliReply.error },
+      { status: 502 }
+    );
+  }
+
   const config = PROVIDERS[provider] ?? PROVIDERS.anthropic;
   const key = apiKey?.trim() || process.env[config.envKey];
 
-  // No API key — try Claude Code CLI (uses Claude Max subscription)
+  // No API key — fall back to Claude Code CLI (uses Claude Max subscription)
   if (!key) {
-    const cliReply = await tryClaudeCLI(messages, system || DEFAULT_SYSTEM);
-    if (cliReply) return NextResponse.json({ reply: cliReply, simulated: false, via: "cli" });
+    const cliReply = await runCli("claude", messages, systemPrompt);
+    if (cliReply.ok) return NextResponse.json({ reply: cliReply.text, simulated: false, via: "cli" });
     const reply = SIM_REPLIES[Math.floor(Math.random() * SIM_REPLIES.length)];
     return NextResponse.json({ reply, simulated: true });
   }
 
-  const systemPrompt = system || DEFAULT_SYSTEM;
   const useModel = model || config.defaultModel;
 
   const requestBody =
@@ -138,19 +152,21 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Uses the local Claude Code CLI credentials (Claude Max subscription)
-function tryClaudeCLI(
+// Spawn a local CLI binary (claude, hermes, etc.) with the prompt on argv.
+// The CLI is expected to print its reply to stdout and exit 0.
+function runCli(
+  cmd: string,
   messages: ChatMessage[],
   system: string
-): Promise<string | null> {
+): Promise<{ ok: true; text: string } | { ok: false; error: string }> {
   return new Promise((resolve) => {
     const history = messages
       .map((m) => `${m.role === "user" ? "Human" : "Assistant"}: ${m.content}`)
       .join("\n");
     const prompt = `${system}\n\n${history}\nAssistant:`;
 
-    const proc = spawn("claude", ["--print", prompt], {
-      timeout: 30000,
+    const proc = spawn(cmd, ["--print", prompt], {
+      timeout: 60000,
       shell: true,
     });
 
@@ -159,9 +175,12 @@ function tryClaudeCLI(
     proc.stdout.on("data", (d: Buffer) => { out += d.toString(); });
     proc.stderr.on("data", (d: Buffer) => { err += d.toString(); });
     proc.on("close", (code: number) => {
-      if (code === 0 && out.trim()) resolve(out.trim());
-      else resolve(null);
+      if (code === 0 && out.trim()) {
+        resolve({ ok: true, text: out.trim() });
+      } else {
+        resolve({ ok: false, error: err.trim() || `${cmd} exited with code ${code}` });
+      }
     });
-    proc.on("error", () => resolve(null));
+    proc.on("error", (e: Error) => resolve({ ok: false, error: e.message }));
   });
 }
