@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 import os from "os";
+import { APP_CONFIG } from "@/config";
 
 export const runtime = "nodejs";
 
-const FOLDERS = new Set(["Chats", "Goals", "Journal"]);
-const BASE = "Agentic OS";
+const FOLDERS: Set<string> = new Set(Object.values(APP_CONFIG.vaultSubfolders));
+const BASE = APP_CONFIG.vaultRootFolder;
 
 // Expand a leading ~ and normalize so the vault path works cross-platform.
 function resolveVaultRoot(raw: string): string {

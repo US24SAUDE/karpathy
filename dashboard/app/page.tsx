@@ -7,7 +7,9 @@ import BootSequence from "@/components/BootSequence";
 import TopBar from "@/components/TopBar";
 import Dock, { type ViewId } from "@/components/Dock";
 import CommandPalette from "@/components/CommandPalette";
+import SetupWizard from "@/components/SetupWizard";
 import { SystemProvider } from "@/lib/system";
+import { APP_CONFIG } from "@/config";
 import MissionControl from "@/views/MissionControl";
 import AgentsView from "@/views/AgentsView";
 import ActivityView from "@/views/ActivityView";
@@ -21,8 +23,10 @@ export default function Page() {
   const [booted, setBooted] = useState(false);
   const [view, setView] = useState<ViewId>("mission");
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [needsSetup, setNeedsSetup] = useState(false);
 
   useEffect(() => {
+    setNeedsSetup(!localStorage.getItem(APP_CONFIG.storage.setupComplete));
     function onKey(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
@@ -84,6 +88,10 @@ export default function Page() {
         onClose={() => setPaletteOpen(false)}
         onSelect={setView}
       />
+
+      {booted && needsSetup && (
+        <SetupWizard onDone={() => setNeedsSetup(false)} />
+      )}
     </SystemProvider>
   );
 }

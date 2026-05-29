@@ -1,8 +1,9 @@
 "use client";
 
 import type { Goal, JournalEntry } from "./types";
+import { APP_CONFIG } from "@/config";
 
-const VAULT_KEY = "claude-os-vault";
+const VAULT_KEY = APP_CONFIG.storage.vault;
 
 export function getVaultPath(): string {
   if (typeof window === "undefined") return "";
