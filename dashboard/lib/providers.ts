@@ -65,7 +65,7 @@ export const PROVIDERS: ProviderMeta[] = [
     accent: "#f59e0b",
     docsUrl: "https://github.com/nousresearch/hermes-agent",
     kind: "cli",
-    cli: { cmd: "hermes", args: ["--print"] },
+    cli: { cmd: "hermes", args: ["-z"] },
     models: [{ id: "hermes-default", label: "Hermes" }],
   },
   {

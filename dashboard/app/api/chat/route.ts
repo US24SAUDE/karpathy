@@ -76,9 +76,13 @@ export async function POST(req: NextRequest) {
   const systemPrompt = system || DEFAULT_SYSTEM;
 
   // CLI providers (claude-cli, hermes, etc.) — spawn local executable
-  if (provider === "hermes" || provider === "claude-cli") {
-    const cmd = provider === "hermes" ? "hermes" : "claude";
-    const cliReply = await runCli(cmd, messages, systemPrompt);
+  const CLI_CONFIGS: Record<string, { cmd: string; args: string[] }> = {
+    hermes: { cmd: "hermes", args: ["-z"] },
+    "claude-cli": { cmd: "claude", args: ["--print"] },
+  };
+  if (CLI_CONFIGS[provider]) {
+    const { cmd, args } = CLI_CONFIGS[provider];
+    const cliReply = await runCli(cmd, args, messages, systemPrompt);
     if (cliReply.ok) {
       return NextResponse.json({ reply: cliReply.text, simulated: false, via: "cli" });
     }
@@ -93,7 +97,7 @@ export async function POST(req: NextRequest) {
 
   // No API key — fall back to Claude Code CLI (uses Claude Max subscription)
   if (!key) {
-    const cliReply = await runCli("claude", messages, systemPrompt);
+    const cliReply = await runCli("claude", ["--print"], messages, systemPrompt);
     if (cliReply.ok) return NextResponse.json({ reply: cliReply.text, simulated: false, via: "cli" });
     const reply = SIM_REPLIES[Math.floor(Math.random() * SIM_REPLIES.length)];
     return NextResponse.json({ reply, simulated: true });
@@ -156,6 +160,7 @@ export async function POST(req: NextRequest) {
 // The CLI is expected to print its reply to stdout and exit 0.
 function runCli(
   cmd: string,
+  flagArgs: string[],
   messages: ChatMessage[],
   system: string
 ): Promise<{ ok: true; text: string } | { ok: false; error: string }> {
@@ -165,7 +170,7 @@ function runCli(
       .join("\n");
     const prompt = `${system}\n\n${history}\nAssistant:`;
 
-    const proc = spawn(cmd, ["--print", prompt], {
+    const proc = spawn(cmd, [...flagArgs, prompt], {
       timeout: 60000,
       shell: true,
     });
