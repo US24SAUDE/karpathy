@@ -15,6 +15,7 @@ import { useSystem } from "@/lib/system";
 import { AnimatedNumber, ProgressRing, Sparkline, Pill } from "@/components/primitives";
 import AgentCard from "@/components/AgentCard";
 import AgentWindow from "@/components/AgentWindow";
+import QuickChat from "@/components/QuickChat";
 import { timeAgo } from "@/lib/utils";
 
 const container = {
@@ -121,8 +122,48 @@ export default function MissionControl({
       </motion.div>
 
       <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1fr_360px]">
-        {/* left: fleet */}
+        {/* left: quick chats + fleet */}
         <motion.div variants={item} className="space-y-3">
+          <SectionHeader
+            icon={<Zap size={15} />}
+            title="Quick Chats"
+            right={<Pill color="#a855f7">multi-model</Pill>}
+          />
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div className="h-60">
+              <QuickChat
+                providerId="anthropic"
+                label="Claude"
+                accent="#a855f7"
+                glyph="✦"
+              />
+            </div>
+            <div className="h-60">
+              <QuickChat
+                providerId="openai"
+                label="ChatGPT"
+                accent="#10a37f"
+                glyph="◎"
+              />
+            </div>
+            <div className="h-60">
+              <QuickChat
+                providerId="xai"
+                label="Grok"
+                accent="#e5e7eb"
+                glyph="✕"
+              />
+            </div>
+          </div>
+          <div className="h-60">
+            <QuickChat
+              providerId="hermes"
+              label="Hermes Agent"
+              accent="#f59e0b"
+              glyph="☤"
+            />
+          </div>
+
           <SectionHeader
             icon={<Bot size={15} />}
             title="Agent Fleet"
