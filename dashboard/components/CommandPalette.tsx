@@ -10,6 +10,7 @@ import {
   Target,
   BookOpen,
   Settings,
+  Wand2,
   CornerDownLeft,
   type LucideIcon,
 } from "lucide-react";
@@ -32,6 +33,7 @@ const COMMANDS: Cmd[] = [
   { id: "3", label: "Open Activity Stream", hint: "events", icon: Activity, color: "#6B7E4E", view: "activity" },
   { id: "4", label: "Open Analytics", hint: "metrics", icon: BarChart3, color: "#F6E4B8", view: "analytics" },
   { id: "5", label: "Launch Claude Console", hint: "chat", icon: Terminal, color: "#8E5916", view: "console" },
+  { id: "5b", label: "Draft & Review", hint: "two models side-by-side", icon: Wand2, color: "#B9822D", view: "draft" },
   { id: "6", label: "Open Goals", hint: "goals · obsidian", icon: Target, color: "#f59e0b", view: "goals" },
   { id: "7", label: "Open Journal", hint: "journal · obsidian", icon: BookOpen, color: "#06b6d4", view: "journal" },
   { id: "8", label: "Open Settings", hint: "config · API key · vault", icon: Settings, color: "#54718A", view: "settings" },

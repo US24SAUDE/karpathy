@@ -10,6 +10,7 @@ import {
   Target,
   BookOpen,
   Settings,
+  Wand2,
   type LucideIcon,
 } from "lucide-react";
 import { cx } from "@/lib/utils";
@@ -20,6 +21,7 @@ export type ViewId =
   | "activity"
   | "analytics"
   | "console"
+  | "draft"
   | "goals"
   | "journal"
   | "settings";
@@ -31,6 +33,7 @@ const ITEMS: { id: ViewId; label: string; icon: LucideIcon; color: string }[] =
     { id: "activity", label: "Activity Stream", icon: Activity, color: "#6B7E4E" },
     { id: "analytics", label: "Analytics", icon: BarChart3, color: "#F6E4B8" },
     { id: "console", label: "Claude Console", icon: Terminal, color: "#8E5916" },
+    { id: "draft", label: "Draft & Review", icon: Wand2, color: "#B9822D" },
     { id: "goals", label: "Goals", icon: Target, color: "#f59e0b" },
     { id: "journal", label: "Journal", icon: BookOpen, color: "#06b6d4" },
     { id: "settings", label: "Settings", icon: Settings, color: "#54718A" },
