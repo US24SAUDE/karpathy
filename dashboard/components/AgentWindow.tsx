@@ -10,10 +10,10 @@ import { ProgressRing, StatusDot, STATUS_LABEL, Pill } from "./primitives";
 import AgentAvatar from "./AgentAvatar";
 
 const LEVEL_COLOR = {
-  info: "#9fa3b5",
-  ok: "#b8a878",
-  warn: "#f4c430",
-  err: "#b07a5b",
+  info: "#3E3428",
+  ok: "#6B7E4E",
+  warn: "#F6E4B8",
+  err: "#A83722",
 };
 
 export default function AgentWindow({
@@ -42,7 +42,7 @@ export default function AgentWindow({
           exit={{ opacity: 0 }}
         >
           <div
-            className="absolute inset-0 bg-void/70 backdrop-blur-md"
+            className="absolute inset-0 bg-ink/70 backdrop-blur-md"
             onClick={onClose}
           />
           <motion.div
@@ -57,7 +57,7 @@ export default function AgentWindow({
             style={{ boxShadow: "0 40px 120px rgba(0,0,0,0.7)" }}
           >
             {/* title bar (drag handle) */}
-            <div className="flex cursor-grab items-center justify-between border-b border-white/8 px-4 py-3 active:cursor-grabbing">
+            <div className="flex cursor-grab items-center justify-between border-b border-ink/8 px-4 py-3 active:cursor-grabbing">
               <div className="flex items-center gap-3">
                 <div className="flex gap-1.5">
                   <span className="h-3 w-3 rounded-full bg-rose/80" onClick={onClose} />
@@ -70,7 +70,7 @@ export default function AgentWindow({
               </div>
               <button
                 onClick={onClose}
-                className="rounded-lg p-1 text-faint transition hover:bg-white/10 hover:text-ink"
+                className="rounded-lg p-1 text-faint transition hover:bg-ink/10 hover:text-ink"
               >
                 <X size={16} />
               </button>
@@ -98,7 +98,7 @@ export default function AgentWindow({
                 <div className="text-sm text-muted">{agent.role}</div>
                 <div className="mt-1 flex gap-2">
                   <Pill color={agent.gradient[0]}>{agent.model}</Pill>
-                  <Pill color="#b8a878">↑ {formatUptime(agent.uptime)}</Pill>
+                  <Pill color="#6B7E4E">↑ {formatUptime(agent.uptime)}</Pill>
                 </div>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function AgentWindow({
             {/* body */}
             <div className="grid grid-cols-[1fr_auto] gap-5 px-5 pb-4">
               <div>
-                <div className="mb-3 rounded-xl border border-white/5 bg-white/[0.03] p-3">
+                <div className="mb-3 rounded-xl border border-ink/5 bg-ink/[0.03] p-3">
                   <div className="mb-1 text-[10px] uppercase tracking-wider text-faint">
                     Current Task
                   </div>
@@ -131,7 +131,7 @@ export default function AgentWindow({
                 <ProgressRing
                   value={agent.mem}
                   size={84}
-                  gradient={["#c0c5ce", "#b8a878"]}
+                  gradient={["#6B7E4E", "#6B7E4E"]}
                   sub="MEM"
                 />
               </div>
@@ -150,7 +150,7 @@ export default function AgentWindow({
               </div>
               <div
                 ref={logRef}
-                className="h-36 overflow-y-auto rounded-xl border border-white/5 bg-black/40 p-3 font-mono text-[11px] leading-relaxed"
+                className="h-36 overflow-y-auto rounded-xl border border-ink/5 bg-ink/40 p-3 font-mono text-[11px] leading-relaxed"
               >
                 {agent.logs.length === 0 && (
                   <div className="text-faint">awaiting telemetry…</div>
@@ -171,32 +171,32 @@ export default function AgentWindow({
             </div>
 
             {/* controls */}
-            <div className="flex items-center gap-2 border-t border-white/8 px-5 py-3">
+            <div className="flex items-center gap-2 border-t border-ink/8 px-5 py-3">
               {agent.status === "paused" ? (
                 <CtrlBtn
                   icon={<Play size={14} />}
                   label="Resume"
-                  color="#b8a878"
+                  color="#6B7E4E"
                   onClick={() => setAgentStatus(agent.id, "active")}
                 />
               ) : (
                 <CtrlBtn
                   icon={<Pause size={14} />}
                   label="Pause"
-                  color="#f4c430"
+                  color="#F6E4B8"
                   onClick={() => setAgentStatus(agent.id, "paused")}
                 />
               )}
               <CtrlBtn
                 icon={<RotateCw size={14} />}
                 label="Restart"
-                color="#c0c5ce"
+                color="#6B7E4E"
                 onClick={() => setAgentStatus(agent.id, "thinking")}
               />
               <CtrlBtn
                 icon={<Square size={14} />}
                 label="Halt"
-                color="#b07a5b"
+                color="#A83722"
                 onClick={() => setAgentStatus(agent.id, "idle")}
               />
               <div className="ml-auto text-[10px] text-faint">
@@ -212,7 +212,7 @@ export default function AgentWindow({
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-white/5 bg-white/[0.03] p-2.5 text-center">
+    <div className="rounded-xl border border-ink/5 bg-ink/[0.03] p-2.5 text-center">
       <div className="text-[10px] uppercase tracking-wider text-faint">
         {label}
       </div>

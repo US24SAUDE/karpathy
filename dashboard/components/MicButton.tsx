@@ -99,7 +99,7 @@ export default function MicButton({ value, onChange, lang }: MicButtonProps) {
       }`}
       style={
         listening
-          ? { background: "linear-gradient(135deg,#b07a5b,#cd7f32)" }
+          ? { background: "linear-gradient(135deg,#A83722,#8E5916)" }
           : { background: "rgba(255,255,255,0.05)" }
       }
     >

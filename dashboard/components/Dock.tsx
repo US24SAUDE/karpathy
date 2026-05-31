@@ -26,14 +26,14 @@ export type ViewId =
 
 const ITEMS: { id: ViewId; label: string; icon: LucideIcon; color: string }[] =
   [
-    { id: "mission", label: "Mission Control", icon: LayoutDashboard, color: "#d4af37" },
-    { id: "agents", label: "Agent Fleet", icon: Bot, color: "#c0c5ce" },
-    { id: "activity", label: "Activity Stream", icon: Activity, color: "#b8a878" },
-    { id: "analytics", label: "Analytics", icon: BarChart3, color: "#f4c430" },
-    { id: "console", label: "Claude Console", icon: Terminal, color: "#cd7f32" },
+    { id: "mission", label: "Mission Control", icon: LayoutDashboard, color: "#B9822D" },
+    { id: "agents", label: "Agent Fleet", icon: Bot, color: "#6B7E4E" },
+    { id: "activity", label: "Activity Stream", icon: Activity, color: "#6B7E4E" },
+    { id: "analytics", label: "Analytics", icon: BarChart3, color: "#F6E4B8" },
+    { id: "console", label: "Claude Console", icon: Terminal, color: "#8E5916" },
     { id: "goals", label: "Goals", icon: Target, color: "#f59e0b" },
     { id: "journal", label: "Journal", icon: BookOpen, color: "#06b6d4" },
-    { id: "settings", label: "Settings", icon: Settings, color: "#1d4ed8" },
+    { id: "settings", label: "Settings", icon: Settings, color: "#54718A" },
   ];
 
 export default function Dock({
@@ -44,7 +44,7 @@ export default function Dock({
   onSelect: (v: ViewId) => void;
 }) {
   return (
-    <nav className="relative z-30 flex flex-col items-center gap-2 border-r border-white/5 px-2.5 py-4 glass">
+    <nav className="relative z-30 flex flex-col items-center gap-2 border-r border-ink/5 px-2.5 py-4 glass">
       {ITEMS.map((item) => {
         const isActive = active === item.id;
         const Icon = item.icon;
@@ -71,8 +71,8 @@ export default function Dock({
               className={cx(
                 "dock-glow flex h-11 w-11 items-center justify-center rounded-2xl border transition-colors",
                 isActive
-                  ? "border-white/15"
-                  : "border-transparent hover:border-white/10"
+                  ? "border-ink/15"
+                  : "border-transparent hover:border-ink/10"
               )}
               style={
                 isActive
@@ -87,7 +87,7 @@ export default function Dock({
             </motion.span>
 
             {/* tooltip */}
-            <span className="pointer-events-none absolute left-14 z-50 whitespace-nowrap rounded-lg border border-white/10 bg-abyss/90 px-2.5 py-1 text-xs text-ink opacity-0 shadow-xl backdrop-blur transition-opacity group-hover:opacity-100">
+            <span className="pointer-events-none absolute left-14 z-50 whitespace-nowrap rounded-lg border border-ink/10 bg-ink/90 px-2.5 py-1 text-xs text-ink opacity-0 shadow-xl backdrop-blur transition-opacity group-hover:opacity-100">
               {item.label}
             </span>
           </button>
@@ -95,7 +95,7 @@ export default function Dock({
       })}
 
       <div className="mt-auto flex flex-col items-center gap-2">
-        <div className="h-px w-6 bg-white/10" />
+        <div className="h-px w-6 bg-ink/10" />
         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-violet to-cyan text-xs font-bold text-white">
           P
         </div>

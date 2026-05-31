@@ -3,20 +3,20 @@
 export default function AuroraBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      {/* base radial wash — midnight blue + gold pools */}
+      {/* base radial wash — warm cream + sage + clinical blue pools */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(1200px 800px at 15% -10%, rgba(29,78,216,0.22), transparent 55%), radial-gradient(1000px 700px at 90% 0%, rgba(212,175,55,0.14), transparent 50%), radial-gradient(1100px 900px at 50% 120%, rgba(205,127,50,0.12), transparent 55%)",
+            "radial-gradient(1200px 800px at 15% -10%, rgba(185,130,45,0.16), transparent 55%), radial-gradient(1000px 700px at 90% 0%, rgba(107,126,78,0.14), transparent 50%), radial-gradient(1100px 900px at 50% 120%, rgba(84,113,138,0.10), transparent 55%)",
         }}
       />
-      {/* drifting blobs — gold, silver, bronze */}
+      {/* drifting blobs — caramel, sage, honey */}
       <div
         className="animate-aurora absolute -left-40 top-[-10%] h-[55vh] w-[55vh] rounded-full blur-[120px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(212,175,55,0.42), transparent 70%)",
+            "radial-gradient(circle, rgba(185,130,45,0.30), transparent 70%)",
         }}
       />
       <div
@@ -24,7 +24,7 @@ export default function AuroraBackground() {
         style={{
           animationDelay: "-7s",
           background:
-            "radial-gradient(circle, rgba(192,197,206,0.32), transparent 70%)",
+            "radial-gradient(circle, rgba(107,126,78,0.24), transparent 70%)",
         }}
       />
       <div
@@ -32,15 +32,15 @@ export default function AuroraBackground() {
         style={{
           animationDelay: "-14s",
           background:
-            "radial-gradient(circle, rgba(205,127,50,0.38), transparent 70%)",
+            "radial-gradient(circle, rgba(246,228,184,0.45), transparent 70%)",
         }}
       />
-      {/* animated grid */}
+      {/* warm caramel grid — barely there */}
       <div
-        className="animate-grid absolute inset-0 opacity-[0.18]"
+        className="animate-grid absolute inset-0 opacity-[0.10]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)",
+            "linear-gradient(rgba(142,89,22,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(142,89,22,0.18) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
           maskImage:
             "radial-gradient(ellipse 80% 70% at 50% 40%, #000 40%, transparent 100%)",
@@ -48,12 +48,12 @@ export default function AuroraBackground() {
             "radial-gradient(ellipse 80% 70% at 50% 40%, #000 40%, transparent 100%)",
         }}
       />
-      {/* vignette */}
+      {/* soft cocoa vignette — warmer than black */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 120% 100% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%)",
+            "radial-gradient(ellipse 120% 100% at 50% 50%, transparent 55%, rgba(62,52,40,0.22) 100%)",
         }}
       />
       <div className="noise" />

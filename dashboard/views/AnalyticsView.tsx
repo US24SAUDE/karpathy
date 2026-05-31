@@ -33,10 +33,10 @@ export default function AnalyticsView() {
       </div>
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Stat label="Total Tokens" value={formatNum(totalTokens)} color="#d4af37" />
-        <Stat label="Active Models" value="4" color="#c0c5ce" />
-        <Stat label="Success Rate" value={`${vitals.successRate.toFixed(1)}%`} color="#b8a878" />
-        <Stat label="Spend (mo)" value="$1,284" color="#f4c430" />
+        <Stat label="Total Tokens" value={formatNum(totalTokens)} color="#B9822D" />
+        <Stat label="Active Models" value="4" color="#6B7E4E" />
+        <Stat label="Success Rate" value={`${vitals.successRate.toFixed(1)}%`} color="#6B7E4E" />
+        <Stat label="Spend (mo)" value="$1,284" color="#F6E4B8" />
       </div>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_360px]">
@@ -61,8 +61,8 @@ export default function AnalyticsView() {
                     className="w-full rounded-t-lg"
                     style={{
                       background:
-                        "linear-gradient(to top, #d4af37, #cd7f32, #c0c5ce)",
-                      boxShadow: "0 0 18px rgba(212,175,55,0.35)",
+                        "linear-gradient(to top, #B9822D, #8E5916, #6B7E4E)",
+                      boxShadow: "0 0 18px rgba(185,130,45,0.35)",
                     }}
                   />
                 </div>
@@ -94,7 +94,7 @@ export default function AnalyticsView() {
                         {pct.toFixed(1)}%
                       </span>
                     </div>
-                    <div className="h-2 overflow-hidden rounded-full bg-white/5">
+                    <div className="h-2 overflow-hidden rounded-full bg-ink/5">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${pct}%` }}
@@ -126,7 +126,7 @@ export default function AnalyticsView() {
           data={vitals.throughput}
           width={1000}
           height={120}
-          gradient={["#c0c5ce", "#d4af37"]}
+          gradient={["#6B7E4E", "#B9822D"]}
         />
       </div>
     </div>

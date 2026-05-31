@@ -152,8 +152,8 @@ export default function ConsoleView() {
               whileTap={{ scale: 0.98 }}
               className={`w-full flex items-center gap-3 rounded-xl px-3 py-2 text-left transition ${
                 selectedAgent === a.id
-                  ? "bg-white/[0.08] ring-1 ring-white/20"
-                  : "hover:bg-white/[0.04]"
+                  ? "bg-ink/[0.08] ring-1 ring-ink/20"
+                  : "hover:bg-ink/[0.04]"
               }`}
             >
               <AgentAvatar agentId={a.id as AgentId} size="sm" /> {/* agent seed data uses AgentId literals */}
@@ -166,7 +166,7 @@ export default function ConsoleView() {
         </div>
 
         {/* main console button */}
-        <div className="mt-auto pt-3 border-t border-white/8">
+        <div className="mt-auto pt-3 border-t border-ink/8">
           <motion.button
             onClick={() => {
               setSelectedAgent("atlas");
@@ -177,7 +177,7 @@ export default function ConsoleView() {
             }}
             whileHover={{ x: 2 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full flex items-center gap-3 rounded-xl px-3 py-2 text-left hover:bg-white/[0.04] transition"
+            className="w-full flex items-center gap-3 rounded-xl px-3 py-2 text-left hover:bg-ink/[0.04] transition"
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-magenta to-violet text-sm flex-shrink-0">
               ✦
@@ -225,7 +225,7 @@ export default function ConsoleView() {
           <div className="relative">
             <button
               onClick={() => setModelMenu((o) => !o)}
-              className="flex items-center gap-2 rounded-xl glass px-3 py-2 text-xs font-medium text-ink transition hover:bg-white/[0.06]"
+              className="flex items-center gap-2 rounded-xl glass px-3 py-2 text-xs font-medium text-ink transition hover:bg-ink/[0.06]"
             >
               <span
                 className="h-2 w-2 rounded-full"
@@ -274,7 +274,7 @@ export default function ConsoleView() {
                               className={`flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-xs transition ${
                                 model === m.id
                                   ? "bg-magenta/20 text-magenta"
-                                  : "text-muted hover:bg-white/[0.05] hover:text-ink"
+                                  : "text-muted hover:bg-ink/[0.05] hover:text-ink"
                               }`}
                             >
                               {m.label}
@@ -303,8 +303,8 @@ export default function ConsoleView() {
                 transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
                 className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl text-3xl"
                 style={{
-                  background: "linear-gradient(135deg,#cd7f32,#d4af37,#c0c5ce)",
-                  boxShadow: "0 0 40px rgba(205,127,50,0.4)",
+                  background: "linear-gradient(135deg,#8E5916,#B9822D,#6B7E4E)",
+                  boxShadow: "0 0 40px rgba(142,89,22,0.4)",
                 }}
               >
                 ✦
@@ -322,7 +322,7 @@ export default function ConsoleView() {
                   <button
                     key={s}
                     onClick={() => send(s)}
-                    className="rounded-xl border border-white/8 bg-white/[0.03] px-3 py-2.5 text-left text-xs text-muted transition hover:border-magenta/40 hover:text-ink"
+                    className="rounded-xl border border-ink/8 bg-ink/[0.03] px-3 py-2.5 text-left text-xs text-muted transition hover:border-magenta/40 hover:text-ink"
                   >
                     <Sparkles size={12} className="mb-1 text-magenta" />
                     <div>{s}</div>
@@ -343,9 +343,9 @@ export default function ConsoleView() {
                 className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-sm font-bold"
                 style={
                   m.role === "user"
-                    ? { background: "rgba(255,255,255,0.08)", color: "#f5ecd3" }
+                    ? { background: "rgba(255,255,255,0.08)", color: "#18130D" }
                     : {
-                        background: "linear-gradient(135deg,#cd7f32,#d4af37)",
+                        background: "linear-gradient(135deg,#8E5916,#B9822D)",
                         color: "white",
                       }
                 }
@@ -355,8 +355,8 @@ export default function ConsoleView() {
               <div
                 className={`max-w-[75%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                   m.role === "user"
-                    ? "bg-white/[0.06] text-ink"
-                    : "border border-white/8 bg-white/[0.03] text-ink"
+                    ? "bg-ink/[0.06] text-ink"
+                    : "border border-ink/8 bg-ink/[0.03] text-ink"
                 }`}
               >
                 {m.content}
@@ -380,7 +380,7 @@ export default function ConsoleView() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-magenta to-violet text-sm">
                   ✦
                 </div>
-                <div className="flex items-center gap-1 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3">
+                <div className="flex items-center gap-1 rounded-2xl border border-ink/8 bg-ink/[0.03] px-4 py-3">
                   {[0, 1, 2].map((d) => (
                     <motion.span
                       key={d}
@@ -421,7 +421,7 @@ export default function ConsoleView() {
             onClick={() => send(input)}
             disabled={loading || !input.trim()}
             className="flex h-10 w-10 items-center justify-center rounded-xl text-white transition disabled:opacity-40"
-            style={{ background: "linear-gradient(135deg,#cd7f32,#d4af37)" }}
+            style={{ background: "linear-gradient(135deg,#8E5916,#B9822D)" }}
           >
             {loading ? <Zap size={16} /> : <Send size={16} />}
           </motion.button>

@@ -53,7 +53,7 @@ export default function AgentCard({
         </div>
 
         {/* current task */}
-        <div className="mb-3 h-9 rounded-lg border border-white/5 bg-white/[0.03] px-2.5 py-1.5 text-[11px] leading-snug text-muted">
+        <div className="mb-3 h-9 rounded-lg border border-ink/5 bg-ink/[0.03] px-2.5 py-1.5 text-[11px] leading-snug text-muted">
           <span className="text-faint">▸ </span>
           {agent.currentTask}
         </div>
@@ -75,7 +75,7 @@ export default function AgentCard({
           <Stat icon={<Zap size={11} />} label="TOK" value={formatNum(agent.tokens)} />
         </div>
 
-        <div className="mt-3 flex items-center justify-between border-t border-white/5 pt-2.5 text-[10px] text-faint">
+        <div className="mt-3 flex items-center justify-between border-t border-ink/5 pt-2.5 text-[10px] text-faint">
           <span>{agent.model}</span>
           <span>{agent.tasksDone.toLocaleString()} tasks · {agent.successRate}%</span>
         </div>
@@ -94,7 +94,7 @@ function Stat({
   value: string;
 }) {
   return (
-    <div className="rounded-lg bg-white/[0.03] py-1.5">
+    <div className="rounded-lg bg-ink/[0.03] py-1.5">
       <div className="flex items-center justify-center gap-1 text-faint">
         {icon}
         <span className="text-[9px] uppercase tracking-wider">{label}</span>

@@ -79,7 +79,7 @@ export default function ProviderKeyCard({
       </div>
 
       {provider.kind === "cli" ? (
-        <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3 text-[11px] text-faint">
+        <div className="rounded-xl border border-ink/8 bg-ink/[0.02] p-3 text-[11px] text-faint">
           No API key needed — this provider runs the local{" "}
           <code>{provider.cli?.cmd}</code> binary. Install it from the docs link
           above, then pick it from the model selector in the Console.
@@ -92,7 +92,7 @@ export default function ProviderKeyCard({
               value={key}
               onChange={(e) => setKey(e.target.value)}
               placeholder={provider.placeholder}
-              className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2.5 pr-10 font-mono text-sm text-ink outline-none transition focus:border-violet/50"
+              className="w-full rounded-xl border border-ink/10 bg-ink/30 px-3 py-2.5 pr-10 font-mono text-sm text-ink outline-none transition focus:border-violet/50"
             />
             <button
               onClick={() => setReveal((r) => !r)}
@@ -106,7 +106,7 @@ export default function ProviderKeyCard({
             whileTap={{ scale: 0.97 }}
             onClick={save}
             className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white"
-            style={{ background: "linear-gradient(135deg,#d4af37,#1d4ed8)" }}
+            style={{ background: "linear-gradient(135deg,#B9822D,#54718A)" }}
           >
             {saved ? <Check size={16} /> : null}
             {saved ? "Saved" : "Save"}

@@ -46,7 +46,7 @@ export default function BootSequence({ onDone }: { onDone: () => void }) {
           className="absolute inset-0 rounded-3xl blur-2xl"
           style={{
             background:
-              "conic-gradient(from 0deg, #d4af37, #c0c5ce, #cd7f32, #d4af37)",
+              "conic-gradient(from 0deg, #B9822D, #6B7E4E, #8E5916, #B9822D)",
           }}
         />
         <div className="relative flex h-24 w-24 items-center justify-center rounded-3xl glass-strong">
@@ -56,7 +56,7 @@ export default function BootSequence({ onDone }: { onDone: () => void }) {
             className="text-5xl"
             style={{
               background:
-                "linear-gradient(135deg,#d4af37,#c0c5ce,#cd7f32)",
+                "linear-gradient(135deg,#B9822D,#6B7E4E,#8E5916)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
@@ -97,11 +97,11 @@ export default function BootSequence({ onDone }: { onDone: () => void }) {
         ))}
       </div>
 
-      <div className="mt-6 h-[3px] w-[340px] overflow-hidden rounded-full bg-white/5">
+      <div className="mt-6 h-[3px] w-[340px] overflow-hidden rounded-full bg-ink/5">
         <motion.div
           className="h-full rounded-full"
           style={{
-            background: "linear-gradient(90deg,#d4af37,#c0c5ce,#cd7f32)",
+            background: "linear-gradient(90deg,#B9822D,#6B7E4E,#8E5916)",
           }}
           initial={{ width: "0%" }}
           animate={{ width: `${(shown / LINES.length) * 100}%` }}

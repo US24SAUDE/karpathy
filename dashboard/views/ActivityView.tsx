@@ -19,12 +19,12 @@ const KIND_META: Record<
   ActivityEvent["kind"],
   { icon: LucideIcon; color: string }
 > = {
-  deploy: { icon: Rocket, color: "#c0c5ce" },
-  task: { icon: CheckCircle2, color: "#b8a878" },
-  alert: { icon: AlertTriangle, color: "#f4c430" },
-  data: { icon: Database, color: "#d4af37" },
-  comms: { icon: MessageSquare, color: "#cd7f32" },
-  model: { icon: Cpu, color: "#1d4ed8" },
+  deploy: { icon: Rocket, color: "#6B7E4E" },
+  task: { icon: CheckCircle2, color: "#6B7E4E" },
+  alert: { icon: AlertTriangle, color: "#F6E4B8" },
+  data: { icon: Database, color: "#B9822D" },
+  comms: { icon: MessageSquare, color: "#8E5916" },
+  model: { icon: Cpu, color: "#54718A" },
 };
 
 export default function ActivityView() {
@@ -54,7 +54,7 @@ export default function ActivityView() {
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: Math.min(i * 0.015, 0.3) }}
-                className="relative flex items-center gap-4 rounded-xl px-2 py-2.5 transition hover:bg-white/[0.03]"
+                className="relative flex items-center gap-4 rounded-xl px-2 py-2.5 transition hover:bg-ink/[0.03]"
               >
                 <span
                   className="relative z-10 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl"

@@ -84,7 +84,7 @@ export default function JournalView() {
           onClick={submit}
           disabled={!draft.trim()}
           className="flex h-10 w-10 items-center justify-center rounded-xl text-white transition disabled:opacity-40"
-          style={{ background: "linear-gradient(135deg,#c0c5ce,#1d4ed8)" }}
+          style={{ background: "linear-gradient(135deg,#6B7E4E,#54718A)" }}
         >
           <Send size={16} />
         </motion.button>
@@ -109,7 +109,7 @@ export default function JournalView() {
                   layout
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-2 rounded-xl border border-white/8 bg-white/[0.03] p-3"
+                  className="mb-2 rounded-xl border border-ink/8 bg-ink/[0.03] p-3"
                 >
                   <div className="mb-1 text-[10px] uppercase tracking-wider text-faint">
                     {timeLabel(e.createdAt)}

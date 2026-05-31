@@ -68,7 +68,7 @@ export default function SettingsView() {
         <ProviderKeyCard key={p.id} provider={p} delay={i * 0.03} />
       ))}
 
-      <div className="flex items-start gap-2 rounded-xl border border-white/5 bg-white/[0.02] p-3 text-[11px] text-faint">
+      <div className="flex items-start gap-2 rounded-xl border border-ink/5 bg-ink/[0.02] p-3 text-[11px] text-faint">
         <Shield size={14} className="mt-0.5 flex-shrink-0 text-emerald" />
         <span>
           Keys never leave your machine except to call each provider directly
@@ -109,7 +109,7 @@ export default function SettingsView() {
             value={vault}
             onChange={(e) => setVault(e.target.value)}
             placeholder="/Users/you/Documents/Obsidian Vault"
-            className="w-full flex-1 rounded-xl border border-white/10 bg-black/30 px-3 py-2.5 font-mono text-sm text-ink outline-none transition focus:border-cyan/50"
+            className="w-full flex-1 rounded-xl border border-ink/10 bg-ink/30 px-3 py-2.5 font-mono text-sm text-ink outline-none transition focus:border-cyan/50"
           />
           <motion.button
             whileHover={{ scale: 1.03 }}
@@ -117,7 +117,7 @@ export default function SettingsView() {
             onClick={saveVault}
             disabled={testing}
             className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white disabled:opacity-60"
-            style={{ background: "linear-gradient(135deg,#c0c5ce,#1d4ed8)" }}
+            style={{ background: "linear-gradient(135deg,#6B7E4E,#54718A)" }}
           >
             {testing ? <Loader2 size={16} className="animate-spin" /> : null}
             {testing ? "Testing" : "Save & Test"}
@@ -149,7 +149,7 @@ export default function SettingsView() {
           </div>
         )}
 
-        <div className="mt-3 flex items-start gap-2 rounded-xl border border-white/5 bg-white/[0.02] p-3 text-[11px] text-faint">
+        <div className="mt-3 flex items-start gap-2 rounded-xl border border-ink/5 bg-ink/[0.02] p-3 text-[11px] text-faint">
           <Shield size={14} className="mt-0.5 flex-shrink-0 text-cyan" />
           <span>
             Point this at your local Obsidian vault folder. Files are written by
@@ -180,7 +180,7 @@ export default function SettingsView() {
             (t) => (
               <span
                 key={t}
-                className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] text-muted"
+                className="rounded-full border border-ink/10 bg-ink/[0.03] px-3 py-1 text-[11px] text-muted"
               >
                 {t}
               </span>

@@ -27,14 +27,14 @@ interface Cmd {
 }
 
 const COMMANDS: Cmd[] = [
-  { id: "1", label: "Open Mission Control", hint: "overview", icon: LayoutDashboard, color: "#d4af37", view: "mission" },
-  { id: "2", label: "View Agent Fleet", hint: "agents", icon: Bot, color: "#c0c5ce", view: "agents" },
-  { id: "3", label: "Open Activity Stream", hint: "events", icon: Activity, color: "#b8a878", view: "activity" },
-  { id: "4", label: "Open Analytics", hint: "metrics", icon: BarChart3, color: "#f4c430", view: "analytics" },
-  { id: "5", label: "Launch Claude Console", hint: "chat", icon: Terminal, color: "#cd7f32", view: "console" },
+  { id: "1", label: "Open Mission Control", hint: "overview", icon: LayoutDashboard, color: "#B9822D", view: "mission" },
+  { id: "2", label: "View Agent Fleet", hint: "agents", icon: Bot, color: "#6B7E4E", view: "agents" },
+  { id: "3", label: "Open Activity Stream", hint: "events", icon: Activity, color: "#6B7E4E", view: "activity" },
+  { id: "4", label: "Open Analytics", hint: "metrics", icon: BarChart3, color: "#F6E4B8", view: "analytics" },
+  { id: "5", label: "Launch Claude Console", hint: "chat", icon: Terminal, color: "#8E5916", view: "console" },
   { id: "6", label: "Open Goals", hint: "goals · obsidian", icon: Target, color: "#f59e0b", view: "goals" },
   { id: "7", label: "Open Journal", hint: "journal · obsidian", icon: BookOpen, color: "#06b6d4", view: "journal" },
-  { id: "8", label: "Open Settings", hint: "config · API key · vault", icon: Settings, color: "#1d4ed8", view: "settings" },
+  { id: "8", label: "Open Settings", hint: "config · API key · vault", icon: Settings, color: "#54718A", view: "settings" },
 ];
 
 export default function CommandPalette({
@@ -96,7 +96,7 @@ export default function CommandPalette({
           exit={{ opacity: 0 }}
         >
           <div
-            className="absolute inset-0 bg-void/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-ink/60 backdrop-blur-sm"
             onClick={onClose}
           />
           <motion.div
@@ -107,7 +107,7 @@ export default function CommandPalette({
             className="relative w-[560px] max-w-[92vw] overflow-hidden rounded-2xl glass-strong shadow-2xl"
             style={{ boxShadow: "0 30px 90px rgba(0,0,0,0.6)" }}
           >
-            <div className="flex items-center gap-3 border-b border-white/8 px-4 py-3.5">
+            <div className="flex items-center gap-3 border-b border-ink/8 px-4 py-3.5">
               <span className="text-violet">⌘</span>
               <input
                 autoFocus
@@ -119,7 +119,7 @@ export default function CommandPalette({
                 placeholder="Type a command or search…"
                 className="flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-faint"
               />
-              <kbd className="rounded-md border border-white/10 px-1.5 py-0.5 text-[10px] text-faint">
+              <kbd className="rounded-md border border-ink/10 px-1.5 py-0.5 text-[10px] text-faint">
                 ESC
               </kbd>
             </div>
@@ -141,7 +141,7 @@ export default function CommandPalette({
                     }}
                     className={cx(
                       "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition",
-                      i === idx ? "bg-white/8" : "hover:bg-white/5"
+                      i === idx ? "bg-ink/8" : "hover:bg-ink/5"
                     )}
                   >
                     <span

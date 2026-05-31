@@ -64,7 +64,7 @@ export default function QuickChat({ providerId, label, accent, glyph }: QuickCha
       className="flex h-full flex-col overflow-hidden rounded-2xl glass-strong"
     >
       <div
-        className="flex items-center gap-2 border-b border-white/8 px-3 py-2"
+        className="flex items-center gap-2 border-b border-ink/8 px-3 py-2"
         style={{ background: `${accent}10` }}
       >
         <span
@@ -78,7 +78,7 @@ export default function QuickChat({ providerId, label, accent, glyph }: QuickCha
           onClick={copy}
           disabled={!reply}
           title="Copy reply"
-          className="ml-auto flex h-7 w-7 items-center justify-center rounded-lg text-faint transition hover:bg-white/5 hover:text-ink disabled:opacity-30"
+          className="ml-auto flex h-7 w-7 items-center justify-center rounded-lg text-faint transition hover:bg-ink/5 hover:text-ink disabled:opacity-30"
         >
           {copied ? <Check size={14} className="text-emerald" /> : <Copy size={14} />}
         </button>
@@ -96,7 +96,7 @@ export default function QuickChat({ providerId, label, accent, glyph }: QuickCha
         )}
       </div>
 
-      <div className="flex items-end gap-1.5 border-t border-white/8 p-2">
+      <div className="flex items-end gap-1.5 border-t border-ink/8 p-2">
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}

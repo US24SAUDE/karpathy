@@ -74,8 +74,8 @@ export default function MissionControl({
           onClick={onOpenConsole}
           className="hidden items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white shadow-lg sm:flex"
           style={{
-            background: "linear-gradient(135deg,#d4af37,#cd7f32)",
-            boxShadow: "0 8px 30px rgba(212,175,55,0.4)",
+            background: "linear-gradient(135deg,#B9822D,#8E5916)",
+            boxShadow: "0 8px 30px rgba(185,130,45,0.4)",
           }}
         >
           <Zap size={16} /> Talk to Claude
@@ -90,7 +90,7 @@ export default function MissionControl({
         <Kpi
           icon={<Coins size={18} />}
           label="Tokens Today"
-          gradient={["#d4af37", "#1d4ed8"]}
+          gradient={["#B9822D", "#54718A"]}
           spark={vitals.throughput.slice(-20)}
         >
           <AnimatedNumber value={vitals.totalTokens} />
@@ -98,7 +98,7 @@ export default function MissionControl({
         <Kpi
           icon={<Activity size={18} />}
           label="Requests / min"
-          gradient={["#c0c5ce", "#b8a878"]}
+          gradient={["#6B7E4E", "#6B7E4E"]}
           spark={vitals.throughput.slice(-20).map((x) => 100 - x)}
         >
           <AnimatedNumber value={vitals.requestsPerMin} />
@@ -106,7 +106,7 @@ export default function MissionControl({
         <Kpi
           icon={<Coins size={18} />}
           label="Spend Today"
-          gradient={["#f4c430", "#b07a5b"]}
+          gradient={["#F6E4B8", "#A83722"]}
           spark={vitals.throughput.slice(-20)}
         >
           <AnimatedNumber value={vitals.costToday} prefix="$" decimals={2} />
@@ -114,7 +114,7 @@ export default function MissionControl({
         <Kpi
           icon={<Timer size={18} />}
           label="Avg Latency"
-          gradient={["#cd7f32", "#d4af37"]}
+          gradient={["#8E5916", "#B9822D"]}
           spark={vitals.throughput.slice(-20)}
         >
           <AnimatedNumber value={vitals.latency} suffix="ms" />
@@ -127,14 +127,14 @@ export default function MissionControl({
           <SectionHeader
             icon={<Zap size={15} />}
             title="Quick Chats"
-            right={<Pill color="#d4af37">multi-model</Pill>}
+            right={<Pill color="#B9822D">multi-model</Pill>}
           />
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             <div className="h-60">
               <QuickChat
                 providerId="anthropic"
                 label="Claude"
-                accent="#d4af37"
+                accent="#B9822D"
                 glyph="✦"
               />
             </div>
@@ -167,7 +167,7 @@ export default function MissionControl({
           <SectionHeader
             icon={<Bot size={15} />}
             title="Agent Fleet"
-            right={<Pill color="#c0c5ce">{agents.length} nodes</Pill>}
+            right={<Pill color="#6B7E4E">{agents.length} nodes</Pill>}
           />
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {agents.map((a) => (
@@ -184,21 +184,21 @@ export default function MissionControl({
             <div className="mt-3 flex items-center justify-around">
               <ProgressRing
                 value={vitals.gpuLoad}
-                gradient={["#d4af37", "#c0c5ce"]}
+                gradient={["#B9822D", "#6B7E4E"]}
                 sub="GPU"
                 size={88}
               />
               <ProgressRing
                 value={vitals.successRate}
-                gradient={["#b8a878", "#c0c5ce"]}
+                gradient={["#6B7E4E", "#6B7E4E"]}
                 label={`${vitals.successRate.toFixed(1)}%`}
                 sub="success"
                 size={88}
               />
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2 text-center">
-              <Mini label="NET IN" value={`${vitals.netIn.toFixed(1)} MB/s`} color="#b8a878" />
-              <Mini label="NET OUT" value={`${vitals.netOut.toFixed(1)} MB/s`} color="#c0c5ce" />
+              <Mini label="NET IN" value={`${vitals.netIn.toFixed(1)} MB/s`} color="#6B7E4E" />
+              <Mini label="NET OUT" value={`${vitals.netOut.toFixed(1)} MB/s`} color="#6B7E4E" />
             </div>
             <div className="mt-3">
               <div className="mb-1 flex items-center justify-between text-[10px] uppercase tracking-wider text-faint">
@@ -211,7 +211,7 @@ export default function MissionControl({
                 data={vitals.throughput}
                 width={320}
                 height={48}
-                gradient={["#d4af37", "#cd7f32"]}
+                gradient={["#B9822D", "#8E5916"]}
               />
             </div>
           </div>
@@ -328,7 +328,7 @@ function Mini({
   color: string;
 }) {
   return (
-    <div className="rounded-xl border border-white/5 bg-white/[0.03] py-2">
+    <div className="rounded-xl border border-ink/5 bg-ink/[0.03] py-2">
       <div className="text-[9px] uppercase tracking-wider text-faint">{label}</div>
       <div className="text-sm font-semibold tabular-nums" style={{ color }}>
         {value}

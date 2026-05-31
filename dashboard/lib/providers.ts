@@ -35,7 +35,7 @@ export const PROVIDERS: ProviderMeta[] = [
     blurb: "Powers Claude models in the Console",
     storageKey: "claude-os-key",
     placeholder: "sk-ant-...",
-    accent: "#d4af37",
+    accent: "#B9822D",
     docsUrl: "https://console.anthropic.com/settings/keys",
     kind: "api",
     models: [
@@ -50,7 +50,7 @@ export const PROVIDERS: ProviderMeta[] = [
     blurb: "Uses your Claude Max subscription via the local CLI",
     storageKey: "claude-os-cli-claude",
     placeholder: "no key needed",
-    accent: "#d4af37",
+    accent: "#B9822D",
     docsUrl: "https://docs.claude.com/claude-code",
     kind: "cli",
     cli: { cmd: "claude", args: ["--print"] },

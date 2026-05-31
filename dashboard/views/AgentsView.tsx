@@ -48,7 +48,7 @@ export default function AgentsView() {
               className={cx(
                 "rounded-lg px-3 py-1.5 text-xs font-medium capitalize transition",
                 filter === f
-                  ? "bg-white/10 text-ink"
+                  ? "bg-ink/10 text-ink"
                   : "text-faint hover:text-muted"
               )}
               style={

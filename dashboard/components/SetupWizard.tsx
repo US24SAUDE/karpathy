@@ -73,7 +73,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
         exit={{ opacity: 0 }}
         className="fixed inset-0 z-[80] flex items-center justify-center p-6"
       >
-        <div className="absolute inset-0 bg-void/70 backdrop-blur-md" />
+        <div className="absolute inset-0 bg-ink/70 backdrop-blur-md" />
         <motion.div
           initial={{ scale: 0.96, y: 8, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
@@ -82,7 +82,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
           style={{ boxShadow: "0 30px 90px rgba(0,0,0,0.7)" }}
         >
           {/* header */}
-          <div className="flex items-center justify-between border-b border-white/8 px-6 py-4">
+          <div className="flex items-center justify-between border-b border-ink/8 px-6 py-4">
             <div className="flex items-center gap-2">
               <Sparkles className="text-violet" size={18} />
               <span className="text-sm font-semibold tracking-wide text-ink">
@@ -95,7 +95,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
                   <span
                     key={i}
                     className={`h-1.5 w-6 rounded-full transition ${
-                      i <= step ? "bg-violet" : "bg-white/10"
+                      i <= step ? "bg-violet" : "bg-ink/10"
                     }`}
                   />
                 ))}
@@ -125,7 +125,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
                   in three steps: detect your AI agents, link your Obsidian
                   vault, and (optionally) save provider API keys.
                 </p>
-                <div className="rounded-xl border border-white/8 bg-white/[0.03] p-3 text-[11px] text-faint">
+                <div className="rounded-xl border border-ink/8 bg-ink/[0.03] p-3 text-[11px] text-faint">
                   Everything is stored locally on this machine. No data leaves
                   your computer except direct calls to providers you configure.
                 </div>
@@ -176,7 +176,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
                             href={c.docsUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center gap-3 rounded-xl border border-white/8 bg-white/[0.02] px-3 py-2 transition hover:border-white/15"
+                            className="flex items-center gap-3 rounded-xl border border-ink/8 bg-ink/[0.02] px-3 py-2 transition hover:border-ink/15"
                           >
                             <div className="h-1.5 w-1.5 rounded-full bg-faint" />
                             <div className="flex-1">
@@ -221,7 +221,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
                         className={`w-full rounded-xl border px-3 py-2 text-left font-mono text-xs transition ${
                           vault === v
                             ? "border-cyan/40 bg-cyan/5 text-cyan"
-                            : "border-white/8 bg-white/[0.02] text-muted hover:border-white/20"
+                            : "border-ink/8 bg-ink/[0.02] text-muted hover:border-ink/20"
                         }`}
                       >
                         {v}
@@ -238,7 +238,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
                       ? "C:\\Users\\you\\Documents\\Obsidian Vault"
                       : "/Users/you/Documents/Obsidian Vault"
                   }
-                  className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2.5 font-mono text-sm text-ink outline-none transition focus:border-cyan/50"
+                  className="w-full rounded-xl border border-ink/10 bg-ink/30 px-3 py-2.5 font-mono text-sm text-ink outline-none transition focus:border-cyan/50"
                 />
               </div>
             )}
@@ -264,7 +264,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
                           setKeys((prev) => ({ ...prev, [p.id]: e.target.value }))
                         }
                         placeholder={p.placeholder}
-                        className="flex-1 rounded-lg border border-white/10 bg-black/30 px-3 py-2 font-mono text-xs text-ink outline-none focus:border-violet/50"
+                        className="flex-1 rounded-lg border border-ink/10 bg-ink/30 px-3 py-2 font-mono text-xs text-ink outline-none focus:border-violet/50"
                       />
                     </div>
                   ))}
@@ -274,7 +274,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
           </div>
 
           {/* footer */}
-          <div className="flex items-center justify-between border-t border-white/8 px-6 py-4">
+          <div className="flex items-center justify-between border-t border-ink/8 px-6 py-4">
             <button
               onClick={skip}
               className="text-xs text-faint hover:text-muted"
@@ -285,7 +285,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
               {step > 0 && (
                 <button
                   onClick={() => setStep((s) => (s - 1) as 0 | 1 | 2 | 3)}
-                  className="rounded-lg px-3 py-2 text-xs text-muted hover:bg-white/5"
+                  className="rounded-lg px-3 py-2 text-xs text-muted hover:bg-ink/5"
                 >
                   Back
                 </button>
@@ -296,7 +296,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setStep((s) => (s + 1) as 0 | 1 | 2 | 3)}
                   className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white"
-                  style={{ background: "linear-gradient(135deg,#d4af37,#1d4ed8)" }}
+                  style={{ background: "linear-gradient(135deg,#B9822D,#54718A)" }}
                 >
                   Next <ArrowRight size={14} />
                 </motion.button>
@@ -306,7 +306,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
                   whileTap={{ scale: 0.97 }}
                   onClick={finish}
                   className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white"
-                  style={{ background: "linear-gradient(135deg,#c0c5ce,#d4af37)" }}
+                  style={{ background: "linear-gradient(135deg,#6B7E4E,#B9822D)" }}
                 >
                   <Check size={14} /> Finish
                 </motion.button>
