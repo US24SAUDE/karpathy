@@ -11,7 +11,8 @@ export type ProviderId =
   | "xai"
   | "glm"
   | "hermes"
-  | "claude-cli";
+  | "claude-cli"
+  | "openclaw";
 
 export type ProviderKind = "api" | "cli";
 
@@ -67,6 +68,18 @@ export const PROVIDERS: ProviderMeta[] = [
     kind: "cli",
     cli: { cmd: "hermes", args: ["-z"] },
     models: [{ id: "hermes-default", label: "Hermes" }],
+  },
+  {
+    id: "openclaw",
+    name: "OpenClaw (local CLI)",
+    blurb: "Personal AI assistant that runs locally on your device",
+    storageKey: "claude-os-cli-openclaw",
+    placeholder: "no key needed",
+    accent: "#6B7E4E",
+    docsUrl: "https://github.com/openclaw/openclaw",
+    kind: "cli",
+    cli: { cmd: "openclaw", args: ["agent", "--message"] },
+    models: [{ id: "openclaw-default", label: "OpenClaw" }],
   },
   {
     id: "openai",

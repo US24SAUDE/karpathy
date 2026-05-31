@@ -79,6 +79,7 @@ export async function POST(req: NextRequest) {
   const CLI_CONFIGS: Record<string, { cmd: string; args: string[] }> = {
     hermes: { cmd: "hermes", args: ["-z"] },
     "claude-cli": { cmd: "claude", args: ["--print"] },
+    openclaw: { cmd: "openclaw", args: ["agent", "--message"] },
   };
   if (CLI_CONFIGS[provider]) {
     const { cmd, args } = CLI_CONFIGS[provider];
