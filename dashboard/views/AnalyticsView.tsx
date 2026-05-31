@@ -33,10 +33,10 @@ export default function AnalyticsView() {
       </div>
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Stat label="Total Tokens" value={formatNum(totalTokens)} color="#a855f7" />
-        <Stat label="Active Models" value="4" color="#22d3ee" />
-        <Stat label="Success Rate" value={`${vitals.successRate.toFixed(1)}%`} color="#34d399" />
-        <Stat label="Spend (mo)" value="$1,284" color="#fbbf24" />
+        <Stat label="Total Tokens" value={formatNum(totalTokens)} color="#d4af37" />
+        <Stat label="Active Models" value="4" color="#c0c5ce" />
+        <Stat label="Success Rate" value={`${vitals.successRate.toFixed(1)}%`} color="#b8a878" />
+        <Stat label="Spend (mo)" value="$1,284" color="#f4c430" />
       </div>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_360px]">
@@ -61,8 +61,8 @@ export default function AnalyticsView() {
                     className="w-full rounded-t-lg"
                     style={{
                       background:
-                        "linear-gradient(to top, #a855f7, #ec4899, #22d3ee)",
-                      boxShadow: "0 0 18px rgba(168,85,247,0.35)",
+                        "linear-gradient(to top, #d4af37, #cd7f32, #c0c5ce)",
+                      boxShadow: "0 0 18px rgba(212,175,55,0.35)",
                     }}
                   />
                 </div>
@@ -126,7 +126,7 @@ export default function AnalyticsView() {
           data={vitals.throughput}
           width={1000}
           height={120}
-          gradient={["#22d3ee", "#a855f7"]}
+          gradient={["#c0c5ce", "#d4af37"]}
         />
       </div>
     </div>

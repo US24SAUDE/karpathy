@@ -50,7 +50,7 @@ export default function GoalsView() {
           onClick={submit}
           disabled={!draft.trim()}
           className="flex h-10 w-10 items-center justify-center rounded-xl text-white transition disabled:opacity-40"
-          style={{ background: "linear-gradient(135deg,#fbbf24,#fb7185)" }}
+          style={{ background: "linear-gradient(135deg,#f4c430,#b07a5b)" }}
         >
           <Plus size={18} />
         </motion.button>
@@ -123,7 +123,7 @@ function GoalRow({
         className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-md border transition"
         style={
           done
-            ? { background: "#34d399", borderColor: "#34d399" }
+            ? { background: "#b8a878", borderColor: "#b8a878" }
             : { borderColor: "rgba(255,255,255,0.2)" }
         }
       >

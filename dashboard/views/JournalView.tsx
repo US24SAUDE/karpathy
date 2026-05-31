@@ -84,7 +84,7 @@ export default function JournalView() {
           onClick={submit}
           disabled={!draft.trim()}
           className="flex h-10 w-10 items-center justify-center rounded-xl text-white transition disabled:opacity-40"
-          style={{ background: "linear-gradient(135deg,#22d3ee,#6366f1)" }}
+          style={{ background: "linear-gradient(135deg,#c0c5ce,#1d4ed8)" }}
         >
           <Send size={16} />
         </motion.button>

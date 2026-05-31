@@ -303,8 +303,8 @@ export default function ConsoleView() {
                 transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
                 className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl text-3xl"
                 style={{
-                  background: "linear-gradient(135deg,#ec4899,#a855f7,#22d3ee)",
-                  boxShadow: "0 0 40px rgba(236,72,153,0.4)",
+                  background: "linear-gradient(135deg,#cd7f32,#d4af37,#c0c5ce)",
+                  boxShadow: "0 0 40px rgba(205,127,50,0.4)",
                 }}
               >
                 ✦
@@ -343,9 +343,9 @@ export default function ConsoleView() {
                 className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-sm font-bold"
                 style={
                   m.role === "user"
-                    ? { background: "rgba(255,255,255,0.08)", color: "#ecebff" }
+                    ? { background: "rgba(255,255,255,0.08)", color: "#f5ecd3" }
                     : {
-                        background: "linear-gradient(135deg,#ec4899,#a855f7)",
+                        background: "linear-gradient(135deg,#cd7f32,#d4af37)",
                         color: "white",
                       }
                 }
@@ -421,7 +421,7 @@ export default function ConsoleView() {
             onClick={() => send(input)}
             disabled={loading || !input.trim()}
             className="flex h-10 w-10 items-center justify-center rounded-xl text-white transition disabled:opacity-40"
-            style={{ background: "linear-gradient(135deg,#ec4899,#a855f7)" }}
+            style={{ background: "linear-gradient(135deg,#cd7f32,#d4af37)" }}
           >
             {loading ? <Zap size={16} /> : <Send size={16} />}
           </motion.button>

@@ -32,8 +32,8 @@ export default function TopBar({
           whileHover={{ rotate: 90, scale: 1.1 }}
           className="flex h-8 w-8 items-center justify-center rounded-xl text-lg"
           style={{
-            background: "linear-gradient(135deg,#a855f7,#22d3ee)",
-            boxShadow: "0 0 20px rgba(168,85,247,0.5)",
+            background: "linear-gradient(135deg,#d4af37,#c0c5ce)",
+            boxShadow: "0 0 20px rgba(212,175,55,0.5)",
           }}
         >
           ✦
@@ -62,10 +62,10 @@ export default function TopBar({
 
       {/* right: vitals */}
       <div className="flex items-center gap-4">
-        <Vital icon={<Activity size={13} />} color="#34d399">
+        <Vital icon={<Activity size={13} />} color="#b8a878">
           <AnimatedNumber value={vitals.requestsPerMin} suffix="/min" />
         </Vital>
-        <Vital icon={<Cpu size={13} />} color="#22d3ee">
+        <Vital icon={<Cpu size={13} />} color="#c0c5ce">
           {formatNum(vitals.totalTokens)} tok
         </Vital>
         <div className="hidden lg:block">
@@ -73,7 +73,7 @@ export default function TopBar({
             data={vitals.throughput.slice(-24)}
             width={88}
             height={26}
-            gradient={["#a855f7", "#22d3ee"]}
+            gradient={["#d4af37", "#c0c5ce"]}
             fill={false}
           />
         </div>

@@ -10,10 +10,10 @@ import { ProgressRing, StatusDot, STATUS_LABEL, Pill } from "./primitives";
 import AgentAvatar from "./AgentAvatar";
 
 const LEVEL_COLOR = {
-  info: "#8b88b0",
-  ok: "#34d399",
-  warn: "#fbbf24",
-  err: "#fb7185",
+  info: "#9fa3b5",
+  ok: "#b8a878",
+  warn: "#f4c430",
+  err: "#b07a5b",
 };
 
 export default function AgentWindow({
@@ -98,7 +98,7 @@ export default function AgentWindow({
                 <div className="text-sm text-muted">{agent.role}</div>
                 <div className="mt-1 flex gap-2">
                   <Pill color={agent.gradient[0]}>{agent.model}</Pill>
-                  <Pill color="#34d399">↑ {formatUptime(agent.uptime)}</Pill>
+                  <Pill color="#b8a878">↑ {formatUptime(agent.uptime)}</Pill>
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@ export default function AgentWindow({
                 <ProgressRing
                   value={agent.mem}
                   size={84}
-                  gradient={["#22d3ee", "#34d399"]}
+                  gradient={["#c0c5ce", "#b8a878"]}
                   sub="MEM"
                 />
               </div>
@@ -176,27 +176,27 @@ export default function AgentWindow({
                 <CtrlBtn
                   icon={<Play size={14} />}
                   label="Resume"
-                  color="#34d399"
+                  color="#b8a878"
                   onClick={() => setAgentStatus(agent.id, "active")}
                 />
               ) : (
                 <CtrlBtn
                   icon={<Pause size={14} />}
                   label="Pause"
-                  color="#fbbf24"
+                  color="#f4c430"
                   onClick={() => setAgentStatus(agent.id, "paused")}
                 />
               )}
               <CtrlBtn
                 icon={<RotateCw size={14} />}
                 label="Restart"
-                color="#22d3ee"
+                color="#c0c5ce"
                 onClick={() => setAgentStatus(agent.id, "thinking")}
               />
               <CtrlBtn
                 icon={<Square size={14} />}
                 label="Halt"
-                color="#fb7185"
+                color="#b07a5b"
                 onClick={() => setAgentStatus(agent.id, "idle")}
               />
               <div className="ml-auto text-[10px] text-faint">

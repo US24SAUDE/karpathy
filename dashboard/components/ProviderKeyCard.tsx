@@ -106,7 +106,7 @@ export default function ProviderKeyCard({
             whileTap={{ scale: 0.97 }}
             onClick={save}
             className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white"
-            style={{ background: "linear-gradient(135deg,#a855f7,#6366f1)" }}
+            style={{ background: "linear-gradient(135deg,#d4af37,#1d4ed8)" }}
           >
             {saved ? <Check size={16} /> : null}
             {saved ? "Saved" : "Save"}

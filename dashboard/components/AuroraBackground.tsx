@@ -3,20 +3,20 @@
 export default function AuroraBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      {/* base radial wash */}
+      {/* base radial wash — midnight blue + gold pools */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(1200px 800px at 15% -10%, rgba(99,102,241,0.18), transparent 55%), radial-gradient(1000px 700px at 90% 0%, rgba(236,72,153,0.14), transparent 50%), radial-gradient(1100px 900px at 50% 120%, rgba(34,211,238,0.12), transparent 55%)",
+            "radial-gradient(1200px 800px at 15% -10%, rgba(29,78,216,0.22), transparent 55%), radial-gradient(1000px 700px at 90% 0%, rgba(212,175,55,0.14), transparent 50%), radial-gradient(1100px 900px at 50% 120%, rgba(205,127,50,0.12), transparent 55%)",
         }}
       />
-      {/* drifting aurora blobs */}
+      {/* drifting blobs — gold, silver, bronze */}
       <div
         className="animate-aurora absolute -left-40 top-[-10%] h-[55vh] w-[55vh] rounded-full blur-[120px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(168,85,247,0.5), transparent 70%)",
+            "radial-gradient(circle, rgba(212,175,55,0.42), transparent 70%)",
         }}
       />
       <div
@@ -24,7 +24,7 @@ export default function AuroraBackground() {
         style={{
           animationDelay: "-7s",
           background:
-            "radial-gradient(circle, rgba(34,211,238,0.4), transparent 70%)",
+            "radial-gradient(circle, rgba(192,197,206,0.32), transparent 70%)",
         }}
       />
       <div
@@ -32,7 +32,7 @@ export default function AuroraBackground() {
         style={{
           animationDelay: "-14s",
           background:
-            "radial-gradient(circle, rgba(236,72,153,0.38), transparent 70%)",
+            "radial-gradient(circle, rgba(205,127,50,0.38), transparent 70%)",
         }}
       />
       {/* animated grid */}

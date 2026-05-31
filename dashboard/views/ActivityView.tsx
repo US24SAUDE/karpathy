@@ -19,12 +19,12 @@ const KIND_META: Record<
   ActivityEvent["kind"],
   { icon: LucideIcon; color: string }
 > = {
-  deploy: { icon: Rocket, color: "#22d3ee" },
-  task: { icon: CheckCircle2, color: "#34d399" },
-  alert: { icon: AlertTriangle, color: "#fbbf24" },
-  data: { icon: Database, color: "#a855f7" },
-  comms: { icon: MessageSquare, color: "#ec4899" },
-  model: { icon: Cpu, color: "#6366f1" },
+  deploy: { icon: Rocket, color: "#c0c5ce" },
+  task: { icon: CheckCircle2, color: "#b8a878" },
+  alert: { icon: AlertTriangle, color: "#f4c430" },
+  data: { icon: Database, color: "#d4af37" },
+  comms: { icon: MessageSquare, color: "#cd7f32" },
+  model: { icon: Cpu, color: "#1d4ed8" },
 };
 
 export default function ActivityView() {

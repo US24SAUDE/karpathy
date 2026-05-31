@@ -3,8 +3,8 @@
 # Usage: curl -fsSL <raw-url>/setup.sh | bash
 set -e
 
-REPO="${CLAUDE_OS_REPO:-https://github.com/us24saude/karpathy.git}"
-DIR="${CLAUDE_OS_DIR:-$HOME/claude-os}"
+REPO="${CLAUDE_OS_REPO:-https://github.com/us24saude/cockpit.git}"
+DIR="${CLAUDE_OS_DIR:-$HOME/cockpit}"
 
 echo "✦ CLAUDE OS setup"
 echo "  repo: $REPO"

@@ -55,11 +55,11 @@ export function AnimatedNumber({
 
 /* ------------------------------ Status dot -------------------------------- */
 const STATUS_COLOR: Record<AgentStatus, string> = {
-  active: "#34d399",
-  thinking: "#a855f7",
-  idle: "#22d3ee",
-  paused: "#fbbf24",
-  error: "#fb7185",
+  active: "#b8a878",
+  thinking: "#d4af37",
+  idle: "#c0c5ce",
+  paused: "#f4c430",
+  error: "#b07a5b",
 };
 
 export const STATUS_LABEL: Record<AgentStatus, string> = {
@@ -111,7 +111,7 @@ export function ProgressRing({
   value,
   size = 96,
   stroke = 8,
-  gradient = ["#a855f7", "#22d3ee"],
+  gradient = ["#d4af37", "#c0c5ce"],
   label,
   sub,
 }: {
@@ -184,7 +184,7 @@ export function Sparkline({
   data,
   width = 120,
   height = 40,
-  gradient = ["#a855f7", "#22d3ee"],
+  gradient = ["#d4af37", "#c0c5ce"],
   fill = true,
 }: {
   data: number[];
@@ -246,7 +246,7 @@ export function Sparkline({
 /* --------------------------------- Pill ----------------------------------- */
 export function Pill({
   children,
-  color = "#a855f7",
+  color = "#d4af37",
   className,
 }: {
   children: React.ReactNode;

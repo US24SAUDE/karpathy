@@ -2,8 +2,8 @@
 # Usage: iex (irm <raw-url>/setup.ps1)
 $ErrorActionPreference = "Stop"
 
-$Repo = if ($env:CLAUDE_OS_REPO) { $env:CLAUDE_OS_REPO } else { "https://github.com/us24saude/karpathy.git" }
-$Dir  = if ($env:CLAUDE_OS_DIR)  { $env:CLAUDE_OS_DIR  } else { Join-Path $HOME "claude-os" }
+$Repo = if ($env:CLAUDE_OS_REPO) { $env:CLAUDE_OS_REPO } else { "https://github.com/us24saude/cockpit.git" }
+$Dir  = if ($env:CLAUDE_OS_DIR)  { $env:CLAUDE_OS_DIR  } else { Join-Path $HOME "cockpit" }
 
 Write-Host "✦ CLAUDE OS setup"
 Write-Host "  repo: $Repo"

@@ -296,7 +296,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setStep((s) => (s + 1) as 0 | 1 | 2 | 3)}
                   className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white"
-                  style={{ background: "linear-gradient(135deg,#a855f7,#6366f1)" }}
+                  style={{ background: "linear-gradient(135deg,#d4af37,#1d4ed8)" }}
                 >
                   Next <ArrowRight size={14} />
                 </motion.button>
@@ -306,7 +306,7 @@ export default function SetupWizard({ onDone }: { onDone: () => void }) {
                   whileTap={{ scale: 0.97 }}
                   onClick={finish}
                   className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white"
-                  style={{ background: "linear-gradient(135deg,#22d3ee,#a855f7)" }}
+                  style={{ background: "linear-gradient(135deg,#c0c5ce,#d4af37)" }}
                 >
                   <Check size={14} /> Finish
                 </motion.button>

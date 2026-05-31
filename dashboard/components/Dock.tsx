@@ -26,14 +26,14 @@ export type ViewId =
 
 const ITEMS: { id: ViewId; label: string; icon: LucideIcon; color: string }[] =
   [
-    { id: "mission", label: "Mission Control", icon: LayoutDashboard, color: "#a855f7" },
-    { id: "agents", label: "Agent Fleet", icon: Bot, color: "#22d3ee" },
-    { id: "activity", label: "Activity Stream", icon: Activity, color: "#34d399" },
-    { id: "analytics", label: "Analytics", icon: BarChart3, color: "#fbbf24" },
-    { id: "console", label: "Claude Console", icon: Terminal, color: "#ec4899" },
+    { id: "mission", label: "Mission Control", icon: LayoutDashboard, color: "#d4af37" },
+    { id: "agents", label: "Agent Fleet", icon: Bot, color: "#c0c5ce" },
+    { id: "activity", label: "Activity Stream", icon: Activity, color: "#b8a878" },
+    { id: "analytics", label: "Analytics", icon: BarChart3, color: "#f4c430" },
+    { id: "console", label: "Claude Console", icon: Terminal, color: "#cd7f32" },
     { id: "goals", label: "Goals", icon: Target, color: "#f59e0b" },
     { id: "journal", label: "Journal", icon: BookOpen, color: "#06b6d4" },
-    { id: "settings", label: "Settings", icon: Settings, color: "#6366f1" },
+    { id: "settings", label: "Settings", icon: Settings, color: "#1d4ed8" },
   ];
 
 export default function Dock({

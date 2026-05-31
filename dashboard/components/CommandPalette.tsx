@@ -27,14 +27,14 @@ interface Cmd {
 }
 
 const COMMANDS: Cmd[] = [
-  { id: "1", label: "Open Mission Control", hint: "overview", icon: LayoutDashboard, color: "#a855f7", view: "mission" },
-  { id: "2", label: "View Agent Fleet", hint: "agents", icon: Bot, color: "#22d3ee", view: "agents" },
-  { id: "3", label: "Open Activity Stream", hint: "events", icon: Activity, color: "#34d399", view: "activity" },
-  { id: "4", label: "Open Analytics", hint: "metrics", icon: BarChart3, color: "#fbbf24", view: "analytics" },
-  { id: "5", label: "Launch Claude Console", hint: "chat", icon: Terminal, color: "#ec4899", view: "console" },
+  { id: "1", label: "Open Mission Control", hint: "overview", icon: LayoutDashboard, color: "#d4af37", view: "mission" },
+  { id: "2", label: "View Agent Fleet", hint: "agents", icon: Bot, color: "#c0c5ce", view: "agents" },
+  { id: "3", label: "Open Activity Stream", hint: "events", icon: Activity, color: "#b8a878", view: "activity" },
+  { id: "4", label: "Open Analytics", hint: "metrics", icon: BarChart3, color: "#f4c430", view: "analytics" },
+  { id: "5", label: "Launch Claude Console", hint: "chat", icon: Terminal, color: "#cd7f32", view: "console" },
   { id: "6", label: "Open Goals", hint: "goals · obsidian", icon: Target, color: "#f59e0b", view: "goals" },
   { id: "7", label: "Open Journal", hint: "journal · obsidian", icon: BookOpen, color: "#06b6d4", view: "journal" },
-  { id: "8", label: "Open Settings", hint: "config · API key · vault", icon: Settings, color: "#6366f1", view: "settings" },
+  { id: "8", label: "Open Settings", hint: "config · API key · vault", icon: Settings, color: "#1d4ed8", view: "settings" },
 ];
 
 export default function CommandPalette({

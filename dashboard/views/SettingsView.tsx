@@ -117,7 +117,7 @@ export default function SettingsView() {
             onClick={saveVault}
             disabled={testing}
             className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white disabled:opacity-60"
-            style={{ background: "linear-gradient(135deg,#22d3ee,#6366f1)" }}
+            style={{ background: "linear-gradient(135deg,#c0c5ce,#1d4ed8)" }}
           >
             {testing ? <Loader2 size={16} className="animate-spin" /> : null}
             {testing ? "Testing" : "Save & Test"}
