@@ -10,7 +10,6 @@ export type ProviderId =
   | "openai"
   | "xai"
   | "glm"
-  | "hermes"
   | "claude-cli"
   | "openclaw";
 
@@ -56,18 +55,6 @@ export const PROVIDERS: ProviderMeta[] = [
     kind: "cli",
     cli: { cmd: "claude", args: ["--print"] },
     models: [{ id: "claude-cli-default", label: "Claude Code" }],
-  },
-  {
-    id: "hermes",
-    name: "Hermes Agent (local CLI)",
-    blurb: "Self-improving agent from Nous Research, runs locally",
-    storageKey: "claude-os-cli-hermes",
-    placeholder: "no key needed",
-    accent: "#f59e0b",
-    docsUrl: "https://github.com/nousresearch/hermes-agent",
-    kind: "cli",
-    cli: { cmd: "hermes", args: ["-z"] },
-    models: [{ id: "hermes-default", label: "Hermes" }],
   },
   {
     id: "openclaw",

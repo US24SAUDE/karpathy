@@ -157,10 +157,10 @@ export default function MissionControl({
           </div>
           <div className="h-60">
             <QuickChat
-              providerId="hermes"
-              label="Hermes Agent"
-              accent="#f59e0b"
-              glyph="☤"
+              providerId="openclaw"
+              label="OpenClaw"
+              accent="#6B7E4E"
+              glyph="◐"
             />
           </div>
 

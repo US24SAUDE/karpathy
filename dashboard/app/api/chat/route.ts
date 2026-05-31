@@ -77,7 +77,6 @@ export async function POST(req: NextRequest) {
 
   // CLI providers (claude-cli, hermes, etc.) — spawn local executable
   const CLI_CONFIGS: Record<string, { cmd: string; args: string[] }> = {
-    hermes: { cmd: "hermes", args: ["-z"] },
     "claude-cli": { cmd: "claude", args: ["--print"] },
     openclaw: { cmd: "openclaw", args: ["agent", "--message"] },
   };

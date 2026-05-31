@@ -8,7 +8,6 @@ export const runtime = "nodejs";
 
 const CLI_TARGETS = [
   { id: "claude", name: "Claude Code", check: "claude", docsUrl: "https://docs.claude.com/claude-code" },
-  { id: "hermes", name: "Hermes Agent", check: "hermes", docsUrl: "https://github.com/nousresearch/hermes-agent" },
   { id: "openclaw", name: "OpenClaw", check: "openclaw", docsUrl: "https://github.com/openclaw/openclaw" },
   { id: "codex", name: "OpenAI Codex", check: "codex", docsUrl: "https://github.com/openai/codex" },
   { id: "aider", name: "Aider", check: "aider", docsUrl: "https://aider.chat" },
