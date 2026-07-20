@@ -34,3 +34,6 @@ sandbox/
 
 # Modal
 .modal/
+
+# Claude Code local settings (contains secrets)
+.claude/
